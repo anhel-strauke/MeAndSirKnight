@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Sunstrider.ogg-0b615d6764de30f8fd3b81dbd2177f5a.oggstr"
+
+[deps]
+
+source_file="res://sound/music/Sunstrider.ogg"
+dest_files=[ "res://.import/Sunstrider.ogg-0b615d6764de30f8fd3b81dbd2177f5a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

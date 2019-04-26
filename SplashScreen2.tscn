@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://SplashScreen.gd" type="Script" id=1]
+[ext_resource path="res://textures/black8x8.png" type="Texture" id=2]
+[ext_resource path="res://splash_screen/godot_logo.png" type="Texture" id=3]
+[ext_resource path="res://splash_screen/ludum_dare_44_logo.png" type="Texture" id=4]
+[ext_resource path="res://splash_screen/sibgamejam_logo.png" type="Texture" id=5]
+[ext_resource path="res://fonts/pixelfont_dynamicfont.tres" type="DynamicFont" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "show"
+length = 4.6
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6, 4, 4.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[node name="SplashScreen2" type="Node2D"]
+script = ExtResource( 1 )
+next_scene = "res://MainMenu.tscn"
+
+[node name="background" type="Sprite" parent="."]
+position = Vector2( 160, 90 )
+z_index = -1
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 320, 180 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="godot_logo" type="Sprite" parent="."]
+position = Vector2( 84, 74 )
+texture = ExtResource( 3 )
+
+[node name="ludum_dare_44_logo" type="Sprite" parent="."]
+position = Vector2( 160, 142 )
+texture = ExtResource( 4 )
+
+[node name="sibgamejam_logo" type="Sprite" parent="."]
+position = Vector2( 235.311, 74.4138 )
+texture = ExtResource( 5 )
+
+[node name="MadeWithLabel" type="Label" parent="."]
+margin_left = 32.0
+margin_top = 18.0
+margin_right = 136.0
+margin_bottom = 37.0
+rect_pivot_offset = Vector2( 0, 19 )
+custom_fonts/font = ExtResource( 6 )
+text = "Сделано в
+Godot Engine"
+align = 1
+
+[node name="SpeciallyForLabel" type="Label" parent="."]
+margin_left = 164.142
+margin_top = 17.8696
+margin_right = 300.142
+margin_bottom = 47.8696
+rect_pivot_offset = Vector2( 0, 19 )
+custom_fonts/font = ExtResource( 6 )
+text = "на Siberian
+Game Jam"
+align = 1
+
+[node name="splash_animation" type="AnimationPlayer" parent="."]
+autoplay = "show"
+anims/show = SubResource( 1 )
+
+[connection signal="animation_finished" from="splash_animation" to="." method="_on_splash_animation_finished"]

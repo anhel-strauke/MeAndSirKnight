@@ -1,0 +1,6 @@
+[gd_scene format=2]
+
+[node name="GameField" type="Node2D"]
+
+[node name="background" type="Node2D" parent="."]
+

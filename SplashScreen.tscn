@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://SplashScreen.gd" type="Script" id=1]
+[ext_resource path="res://splash_screen/splash_screen_team.png" type="Texture" id=2]
+[ext_resource path="res://sound/splash/splash_team.ogg" type="AudioStream" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "show"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("splash_screen_team:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 3.5, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 3 )
+} ],
+"times": PoolRealArray( 0.4 )
+}
+
+[node name="SplashScreen" type="Node2D"]
+script = ExtResource( 1 )
+next_scene = "res://SplashScreen2.tscn"
+
+[node name="splash_screen_team" type="Sprite" parent="."]
+position = Vector2( 160, 90 )
+texture = ExtResource( 2 )
+
+[node name="splash_animation" type="AnimationPlayer" parent="."]
+autoplay = "show"
+anims/show = SubResource( 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[connection signal="animation_finished" from="splash_animation" to="." method="_on_splash_animation_finished"]
