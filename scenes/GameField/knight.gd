@@ -4,7 +4,7 @@ extends Node2D
 # var a = 2
 # var b = "text"
 
-var data = preload("res://data/weapon_data.gd").new()
+var data = preload("res://data/game_data.gd").new()
 var weapon_data = data.weapons
 
 export var hitpoints: int = 0
@@ -61,16 +61,26 @@ func _process(delta):
 
 func do_attack():
 	$AnimationPlayer.play("hit")
-	var damage = calc_damage()
-	print("Knight deals damage: ", damage, "; cooldown: ", cooldown_time, " sec")
-	emit_signal("damage_done", damage)
 	time_since_action = 0.0
 	is_weapon_going_down = false
 	weapon_hit_count[weapon_type] += 1
 	# TODO: Update weapon state
+	
+func take_damage(damage):
+	if hitpoints > 0:
+		hitpoints -= damage
+		if hitpoints <= 0:
+			hitpoints = 0
+			attacking = false
+
+func on_victory():
+	attacking = false
+	$AnimationPlayer.play("victory")
 
 func _on_hit():
-	pass
+	var damage = calc_damage()
+	print("Knight deals damage: ", damage, "; cooldown: ", cooldown_time, " sec")
+	emit_signal("damage_done", damage)
 
 func do_weapon_reset():
 	$AnimationPlayer.play("weapon_reset")
