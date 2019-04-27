@@ -6,6 +6,13 @@ extends Area2D
 #warning-ignore:unused_class_variable
 export var item_name = ""
 
+func set_dimmed(var state):
+	if (state): 
+		 $weapon.set
+	pass
+func set_selected(var state):
+	pass
+
 signal clicked(name) 
 
 #func _input_event(viewport, event, shape_idx):
