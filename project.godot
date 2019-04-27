@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Me And Sir Knight"
-run/main_scene="res://SplashScreen.tscn"
+run/main_scene="res://scenes/SplashScreen.tscn"
 config/icon="res://icon.png"
 
 [autoload]
