@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sword_attack.png-41ac11b0299ee7c0894572a3cb4ac5e5.stex"
+path="res://.import/icon_animation.png-845fd6f53bb0eb34b6c706d9f6ebded6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/weapon_anim/sword_attack.png"
-dest_files=[ "res://.import/sword_attack.png-41ac11b0299ee7c0894572a3cb4ac5e5.stex" ]
+source_file="res://Art/FromArtists/icon_animation.png"
+dest_files=[ "res://.import/icon_animation.png-845fd6f53bb0eb34b6c706d9f6ebded6.stex" ]
 
 [params]
 
@@ -18,9 +18,9 @@ compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
-compress/normal_map=2
+compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
