@@ -59,7 +59,7 @@ func _process(delta):
 				time_since_action += delta
 
 func do_attack():
-	# TODO: Run animation
+	$AnimationPlayer.play("hit")
 	var damage = calc_damage()
 	print("Knight deals damage: ", damage, "; cooldown: ", cooldown_time, " sec")
 	emit_signal("damage_done", damage)
@@ -68,8 +68,11 @@ func do_attack():
 	weapon_hit_count[weapon_type] += 1
 	# TODO: Update weapon state
 
+func _on_hit():
+	pass
+
 func do_weapon_reset():
-	# TODO: Run animation
+	$AnimationPlayer.play("weapon_reset")
 	is_weapon_going_down = true
 	time_since_action = 0.0
 	
