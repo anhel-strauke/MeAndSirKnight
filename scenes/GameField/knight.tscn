@@ -103,7 +103,7 @@ position = Vector2( 0, -101 )
 texture = ExtResource( 2 )
 centered = false
 hframes = 5
-frame = 3
+frame = 4
 
 [node name="weapon" type="Node2D" parent="knight_attack"]
 position = Vector2( 0, 101 )
@@ -115,5 +115,5 @@ position = Vector2( 0, -101 )
 texture = ExtResource( 3 )
 centered = false
 hframes = 5
-frame = 3
+frame = 4
 

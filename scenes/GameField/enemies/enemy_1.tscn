@@ -56,6 +56,7 @@ anims/death = SubResource( 2 )
 anims/hit = SubResource( 1 )
 
 [node name="Enemy_one" type="Sprite" parent="."]
+modulate = Color( 0.192157, 0, 0, 1 )
 position = Vector2( 0, -165 )
 texture = ExtResource( 2 )
 centered = false

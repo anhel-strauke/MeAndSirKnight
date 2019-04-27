@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/background_lava.png-0ca9e14242ed13ccbb8046d9f35cf5da.stex"
+path="res://.import/axe.png-3d34c32b9bdca56b4b39edcbe177d2e2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/FromArtists/background_lava.png"
-dest_files=[ "res://.import/background_lava.png-0ca9e14242ed13ccbb8046d9f35cf5da.stex" ]
+source_file="res://textures/weapon_anim/axe.png"
+dest_files=[ "res://.import/axe.png-3d34c32b9bdca56b4b39edcbe177d2e2.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
