@@ -4,9 +4,9 @@ extends Area2D
 # var a = 2
 # var b = "text"
 #warning-ignore:unused_class_variable
-export var nameWeapon = "tmp" 
-export var description = "tmp" 
-export var nstate = "tmp" 
+export var item_name = ""
+
+signal clicked(name) 
 
 #func _input_event(viewport, event, shape_idx):
 #
@@ -25,5 +25,5 @@ func _ready():
 
 func _on_weaponElement_input_event(viewport, event, shape_idx):
 	if event.is_action_pressed("click_left"):
-		print("11")
+		emit_signal("clicked", item_name)
 	pass # Replace with function body.

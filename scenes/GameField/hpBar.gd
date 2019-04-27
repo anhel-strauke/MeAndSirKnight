@@ -5,17 +5,13 @@ extends Node
 # var b = "text"
 
 # Called when the node enters the scene tree for the first time.
-func _sethp(var hp):
-	var size=$bar.texture.get_size()[0]
-	$bar.set_scale(Vector2(hp,1)) 
-	$second.set_position(Vector2($second.get_position()[0]-(size- $bar.texture.get_size()[0]*hp),$second.get_position()[1]))
-	pass
-
+func set_value(var hp):
+	var size = $bar.texture.get_size().x
+	$bar.set_scale(Vector2(hp, 1)) 
+	$second.set_position(Vector2($second.get_position().x - (size - $bar.texture.get_size().x * hp), $second.get_position().y))
 
 func _ready():
-	
-	_sethp(0.2)
-	pass # Replace with function body.
+	set_value(0.0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
