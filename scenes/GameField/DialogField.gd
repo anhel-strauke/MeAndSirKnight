@@ -6,7 +6,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_startPrint("hello world")
+#	_startPrint("hello world")
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -14,10 +14,11 @@ var bollPrint= false;
 var textToOut=""
 var numb =0 ;
 var timeToPrint=0;
-var maxTime=0.2; 
+var maxTime=0.1; 
 
 
 func _stopPrint () :
+	bollPrint = false
 	pass
 func _startPrint(var text):
 	
@@ -28,10 +29,12 @@ func _startPrint(var text):
 	 $dialogSprite/Label.text = "";
 	
 	
+	
 func _process(delta):
 	timeToPrint= timeToPrint+delta;
 	if (numb==textToOut.length()):
-		bollPrint = false
+		_stopPrint () 
+#		_startPrint("hello world")
 	
 	if (timeToPrint>=maxTime&&bollPrint):
 		timeToPrint=0;
