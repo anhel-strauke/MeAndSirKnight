@@ -5,6 +5,10 @@ extends Node
 # var b = "text"
 
 # Called when the node enters the scene tree for the first time.
+func _loadScene(var sceneName):
+	get_tree().change_scene(sceneName)
+
+
 func _ready():
 	pass # Replace with function body.
 
