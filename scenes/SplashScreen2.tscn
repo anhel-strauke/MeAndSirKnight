@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://SplashScreen.gd" type="Script" id=1]
+[ext_resource path="res://scenes/SplashScreen.gd" type="Script" id=1]
 [ext_resource path="res://textures/black8x8.png" type="Texture" id=2]
 [ext_resource path="res://splash_screen/godot_logo.png" type="Texture" id=3]
 [ext_resource path="res://splash_screen/ludum_dare_44_logo.png" type="Texture" id=4]
