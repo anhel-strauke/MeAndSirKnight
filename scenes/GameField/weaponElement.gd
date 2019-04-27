@@ -8,9 +8,12 @@ export var item_name = ""
 
 func set_dimmed(var state):
 	if (state): 
-		 $weapon.set
+		 $weapon.modulate = Color("#4c4c4c")
+	else:
+		 $weapon.modulate = Color("#ffffff")
 	pass
 func set_selected(var state):
+	$Node2D.visible = state
 	pass
 
 signal clicked(name) 
@@ -22,7 +25,8 @@ signal clicked(name)
 	 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
+	set_selected(true)
+	set_dimmed(true)
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
