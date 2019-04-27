@@ -31,12 +31,14 @@ script = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="weaponeBG" type="Sprite" parent="game_panel/UInode/weaponElement"]
+visible = false
 texture = ExtResource( 3 )
 
 [node name="weapon" type="Sprite" parent="game_panel/UInode/weaponElement"]
 texture = ExtResource( 4 )
 
 [node name="Node2D" parent="game_panel/UInode/weaponElement" instance=ExtResource( 5 )]
+visible = false
 
 [node name="weaponDialog" type="Label" parent="game_panel/UInode"]
 margin_left = 103.49
