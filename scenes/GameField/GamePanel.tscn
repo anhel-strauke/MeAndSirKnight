@@ -17,7 +17,7 @@ extents = Vector2( 16.1256, 16.4804 )
 [node name="GamePanel" type="Node2D"]
 
 [node name="game_panel" type="Sprite" parent="."]
-position = Vector2( 160, 90 )
+position = Vector2( 160, 90.2045 )
 texture = ExtResource( 1 )
 
 [node name="UInode" type="Node" parent="game_panel"]
