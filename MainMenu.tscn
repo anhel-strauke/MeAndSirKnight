@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://scenes/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://backgrounds/main_menu.png" type="Texture" id=2]
 [ext_resource path="res://textures/title.png" type="Texture" id=3]
 [ext_resource path="res://textures/main_menu_cursor.png" type="Texture" id=4]
