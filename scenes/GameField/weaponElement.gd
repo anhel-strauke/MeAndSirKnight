@@ -6,8 +6,10 @@ extends Area2D
 #warning-ignore:unused_class_variable
 export var x = 0 
 
-func _on_Area2D_input_event():
-	print("11")
+#func _input_event(viewport, event, shape_idx):
+#
+#	pass
+#
 	 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,3 +18,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_weaponElement_input_event(viewport, event, shape_idx):
+	if event.is_action_pressed("click_left"):
+		print("11")
+	pass # Replace with function body.
