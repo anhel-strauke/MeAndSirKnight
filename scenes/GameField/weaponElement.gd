@@ -4,7 +4,7 @@ extends Area2D
 # var a = 2
 # var b = "text"
 #warning-ignore:unused_class_variable
-export var x = 0 
+export var x = "tmp" 
 
 #func _input_event(viewport, event, shape_idx):
 #
