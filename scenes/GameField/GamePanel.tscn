@@ -17,7 +17,6 @@ texture = ExtResource( 1 )
 [node name="UInode" type="Node" parent="game_panel"]
 
 [node name="weaponElement" type="Area2D" parent="game_panel/UInode"]
-editor/display_folded = true
 position = Vector2( 18.3458, 22.1799 )
 script = ExtResource( 2 )
 x = 1
