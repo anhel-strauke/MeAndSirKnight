@@ -18,13 +18,14 @@
 [ext_resource path="res://textures/hp_bar3.png" type="Texture" id=16]
 [ext_resource path="res://textures/hp_bar4.png" type="Texture" id=17]
 
+
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16.1256, 16.4804 )
 
 [node name="GamePanel" type="Node2D"]
 
 [node name="game_panel" type="Sprite" parent="."]
-position = Vector2( 160, 90.2045 )
+position = Vector2( 160, 90 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
 
@@ -144,7 +145,7 @@ script = ExtResource( 13 )
 [node name="hpBar" type="Node2D" parent="game_panel/UInode"]
 script = ExtResource( 14 )
 
-[node name="bar" type="Sprite" parent="game_panel/UInode/hpBar"]
+[node name="first" type="Sprite" parent="game_panel/UInode/hpBar"]
 position = Vector2( 73, 7 )
 texture = ExtResource( 15 )
 centered = false
@@ -162,21 +163,27 @@ centered = false
 [node name="hpBar2" type="Node2D" parent="game_panel/UInode"]
 position = Vector2( 388, 0 )
 scale = Vector2( -1, 1 )
+
 script = ExtResource( 14 )
 
-[node name="bar" type="Sprite" parent="game_panel/UInode/hpBar2"]
+
+[node name="first" type="Sprite" parent="game_panel/UInode/hpBar2"]
 position = Vector2( 73, 7 )
+
 texture = ExtResource( 15 )
 centered = false
 
 [node name="first" type="Sprite" parent="game_panel/UInode/hpBar2"]
 position = Vector2( 73, 7 )
 texture = ExtResource( 16 )
+
 centered = false
 
 [node name="second" type="Sprite" parent="game_panel/UInode/hpBar2"]
 position = Vector2( 154, 7 )
+
 texture = ExtResource( 17 )
+
 centered = false
 
 [connection signal="clicked" from="game_panel/UInode/we_give" to="game_panel" method="onButtonClicked"]
