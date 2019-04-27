@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/GameField/me.gd" type="Script" id=1]
 [ext_resource path="res://textures/characters/Me.png" type="Texture" id=2]
+[ext_resource path="res://textures/weapon_anim/sword_attack.png" type="Texture" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle_give"
@@ -43,6 +44,17 @@ position = Vector2( 0, -89 )
 texture = ExtResource( 2 )
 centered = false
 hframes = 4
+frame = 2
+
+[node name="sword" type="Node2D" parent="Me"]
+position = Vector2( 10, 69 )
+
+[node name="sword_attack" type="Sprite" parent="Me/sword"]
+position = Vector2( 0, -50 )
+texture = ExtResource( 3 )
+centered = false
+hframes = 5
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/idle_give = SubResource( 1 )

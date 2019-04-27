@@ -8,7 +8,7 @@ var data = preload("res://data/weapon_data.gd").new()
 var weapon_data = data.weapons
 
 export var hitpoints: int = 0
-export var weapon_type: String = "sword"
+export var weapon_type: String = ""
 export var attacking: bool = false
 
 var cooldown_time = 1.0
@@ -28,6 +28,7 @@ func _ready():
 	# initiate weapon hit count storage
 	for wtype in weapon_data:
 		weapon_hit_count[wtype] = 0
+	replace_weapon("sword")
 
 func durability_func(hit_count):
 	var loss_table = weapon_data[weapon_type]["penalty"]
