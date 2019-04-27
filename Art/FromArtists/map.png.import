@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/hp_bar4.png-592f5502a31ba3a5835294cc86cd9aee.stex"
+path="res://.import/map.png-15efc9c8abbe5696107a61cdd2027625.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/hp_bar4.png"
-dest_files=[ "res://.import/hp_bar4.png-592f5502a31ba3a5835294cc86cd9aee.stex" ]
+source_file="res://Art/FromArtists/map.png"
+dest_files=[ "res://.import/map.png-15efc9c8abbe5696107a61cdd2027625.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
