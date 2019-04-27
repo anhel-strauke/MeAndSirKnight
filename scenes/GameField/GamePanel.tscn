@@ -44,6 +44,7 @@ text = "hello this is my weapone"
 uppercase = true
 
 [node name="hpBar" type="Node" parent="game_panel/UInode"]
+editor/display_folded = true
 script = ExtResource( 6 )
 
 [node name="first" type="Sprite" parent="game_panel/UInode/hpBar"]

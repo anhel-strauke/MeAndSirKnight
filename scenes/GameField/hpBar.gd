@@ -7,10 +7,8 @@ extends Node
 # Called when the node enters the scene tree for the first time.
 func _sethp(var hp):
 	var size=$bar.texture.get_size()[0]
-	print(size)
 	$bar.set_scale(Vector2(hp,1)) 
 	$second.set_position(Vector2($second.get_position()[0]-(size- $bar.texture.get_size()[0]*hp),$second.get_position()[1]))
-	
 	pass
 
 
