@@ -14,4 +14,5 @@ func _ready():
 #	pass
 
 func do_give(weapon):
+	
 	$AnimationPlayer.play("idle_give")
