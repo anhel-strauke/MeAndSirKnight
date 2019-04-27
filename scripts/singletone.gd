@@ -11,3 +11,16 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+const gamedata  = 'user://gamedata.save'
+
+var login = "hello"
+
+var fs = File.new()
+
+func save():
+	fs.open(gamedata,File.WRITE)
+	fs.store_string('{"login" : "'  + login + '" }' )
+	fs.close()
+
+
+
