@@ -19,6 +19,10 @@ config/name="Me And Sir Knight"
 run/main_scene="res://SplashScreen.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+singletone="*res://scripts/singletone.gd"
+
 [display]
 
 window/size/width=320
