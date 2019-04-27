@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://scenes/SplashScreen.gd" type="Script" id=1]
+[ext_resource path="res://SplashScreen.gd" type="Script" id=1]
 [ext_resource path="res://splash_screen/splash_screen_team.png" type="Texture" id=2]
 [ext_resource path="res://sound/splash/splash_team.ogg" type="AudioStream" id=3]
 
@@ -36,7 +36,7 @@ tracks/1/keys = {
 
 [node name="SplashScreen" type="Node2D"]
 script = ExtResource( 1 )
-next_scene = "res://scenes/SplashScreen2.tscn"
+next_scene = "res://SplashScreen2.tscn"
 
 [node name="splash_screen_team" type="Sprite" parent="."]
 position = Vector2( 160, 90 )
