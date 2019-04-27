@@ -7,8 +7,8 @@
 [ext_resource path="res://fonts/pixelfont_dynamicfont.tres" type="DynamicFont" id=5]
 [ext_resource path="res://scenes/GameField/weaponDialog.gd" type="Script" id=6]
 [ext_resource path="res://scenes/GameField/hpBar.gd" type="Script" id=7]
-[ext_resource path="res://textures/hp_bar4.png" type="Texture" id=8]
-[ext_resource path="res://textures/hp_bar2.png" type="Texture" id=9]
+[ext_resource path="res://textures/hp_bar2.png" type="Texture" id=8]
+[ext_resource path="res://textures/hp_bar4.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16.1256, 16.4804 )
@@ -46,22 +46,21 @@ uppercase = true
 script = ExtResource( 6 )
 
 [node name="hpBar" type="Node" parent="game_panel/UInode"]
-editor/display_folded = true
 script = ExtResource( 7 )
 
-[node name="first" type="Sprite" parent="game_panel/UInode/hpBar"]
-position = Vector2( 72.984, 6.52 )
+[node name="bar" type="Sprite" parent="game_panel/UInode/hpBar"]
+position = Vector2( 73.0061, 6.52 )
 texture = ExtResource( 8 )
 centered = false
 
-[node name="bar" type="Sprite" parent="game_panel/UInode/hpBar"]
-position = Vector2( 77, 6.52 )
+[node name="first" type="Sprite" parent="game_panel/UInode/hpBar"]
+position = Vector2( 72.984, 6.52 )
 texture = ExtResource( 9 )
 centered = false
 
 [node name="second" type="Sprite" parent="game_panel/UInode/hpBar"]
 position = Vector2( 154.057, 6.52 )
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )
 centered = false
 
 [connection signal="input_event" from="game_panel/UInode/weaponElement" to="game_panel/UInode/weaponElement" method="_on_weaponElement_input_event"]

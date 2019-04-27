@@ -13,7 +13,8 @@ func _sethp(var hp):
 
 
 func _ready():
-	_sethp(0.4)
+	
+	_sethp(0.2)
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

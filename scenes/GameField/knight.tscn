@@ -4,7 +4,7 @@
 [ext_resource path="res://textures/weapon_anim/sword_attack.png" type="Texture" id=2]
 [ext_resource path="res://textures/characters/knight_attack.png" type="Texture" id=3]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=1]
 resource_name = "hit"
 length = 0.8
 tracks/0/type = "value"
@@ -32,7 +32,7 @@ tracks/1/keys = {
 "values": [ 1, 2, 3, 4 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "weapon_reset"
 length = 0.4
 tracks/0/type = "value"
@@ -72,16 +72,16 @@ position = Vector2( 0, -101 )
 texture = ExtResource( 2 )
 centered = false
 hframes = 5
-frame = 4
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/hit = SubResource( 4 )
-anims/weapon_reset = SubResource( 3 )
+anims/hit = SubResource( 1 )
+anims/weapon_reset = SubResource( 2 )
 
 [node name="knight_attack" type="Sprite" parent="."]
 position = Vector2( 0, -101 )
 texture = ExtResource( 3 )
 centered = false
 hframes = 5
-frame = 4
+frame = 1
 
