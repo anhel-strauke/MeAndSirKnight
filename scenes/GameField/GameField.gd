@@ -9,7 +9,7 @@ var enemy_data = preload("res://data/game_data.gd").new().enemies
 var knight = null
 var squire = null
 
-var current_enemy = "enemy_1"
+export var current_enemy = "enemy_1"
 
 signal damage_done(damage)
 

@@ -1,12 +1,15 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/MainMenu.gd" type="Script" id=1]
-[ext_resource path="res://backgrounds/main_menu.png" type="Texture" id=2]
-[ext_resource path="res://textures/title.png" type="Texture" id=3]
-[ext_resource path="res://textures/main_menu_cursor.png" type="Texture" id=4]
-[ext_resource path="res://fonts/pixelfont_dynamicfont.tres" type="DynamicFont" id=5]
-[ext_resource path="res://sound/music/intro.ogg" type="AudioStream" id=6]
-[ext_resource path="res://sound/music/main.ogg" type="AudioStream" id=7]
+[ext_resource path="res://textures/main_menu/menu_background.png" type="Texture" id=2]
+[ext_resource path="res://textures/characters/knight_attack.png" type="Texture" id=3]
+[ext_resource path="res://textures/characters/Me.png" type="Texture" id=4]
+[ext_resource path="res://textures/main_menu/grass.png" type="Texture" id=5]
+[ext_resource path="res://textures/title.png" type="Texture" id=6]
+[ext_resource path="res://textures/main_menu_cursor.png" type="Texture" id=7]
+[ext_resource path="res://fonts/pixelfont_dynamicfont.tres" type="DynamicFont" id=8]
+[ext_resource path="res://sound/music/intro.ogg" type="AudioStream" id=9]
+[ext_resource path="res://sound/music/main.ogg" type="AudioStream" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "blink"
@@ -42,7 +45,7 @@ func _ready():
 "
 
 [sub_resource type="Animation" id=3]
-length = 1.7
+length = 4.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
@@ -57,39 +60,83 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("title:position")
-tracks/1/interp = 2
+tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.4, 1 ),
+"times": PoolRealArray( 0, 0.5, 0.9 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -104, 50 ), Vector2( -104, 50 ), Vector2( 105, 50 ) ]
+"values": [ Vector2( 109, -57 ), Vector2( 109, -57 ), Vector2( 109, 40 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("game_menu:position")
+tracks/2/path = NodePath("heroes:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1, 1.5 ),
+"times": PoolRealArray( 0, 1.1, 1.6, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -134, 14 ), Vector2( -134, 14 ), Vector2( -134, 14 ), Vector2( -8, 14 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("game_menu:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.9, 1.1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 336, 82 ), Vector2( 336, 82 ), Vector2( 200, 82 ) ]
+"values": [ Vector2( 338, 86 ), Vector2( 360, 82 ), Vector2( 200, 82 ) ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_activate_menu"
+} ]
 }
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="background" type="Sprite" parent="."]
-position = Vector2( 160, 90 )
+[node name="menu_background" type="Sprite" parent="."]
+position = Vector2( 159.695, 90.251 )
 texture = ExtResource( 2 )
 
-[node name="title" type="Sprite" parent="."]
-position = Vector2( 105, 50 )
+[node name="heroes" type="Node2D" parent="."]
+position = Vector2( -134, 14 )
+
+[node name="knight_attack" type="Sprite" parent="heroes"]
+position = Vector2( 107, 97 )
 texture = ExtResource( 3 )
+vframes = 2
+hframes = 6
+
+[node name="Me" type="Sprite" parent="heroes"]
+position = Vector2( 44, 103 )
+texture = ExtResource( 4 )
+hframes = 9
+
+[node name="grass" type="Sprite" parent="."]
+position = Vector2( 160, 160 )
+texture = ExtResource( 5 )
+
+[node name="title" type="Sprite" parent="."]
+position = Vector2( 109, 40 )
+texture = ExtResource( 6 )
 
 [node name="game_menu" type="Node2D" parent="."]
 position = Vector2( 200, 82 )
@@ -97,7 +144,7 @@ position = Vector2( 200, 82 )
 [node name="main_menu_cursor" type="Sprite" parent="game_menu"]
 visible = false
 position = Vector2( -8, 8 )
-texture = ExtResource( 4 )
+texture = ExtResource( 7 )
 centered = false
 hframes = 2
 frame = 1
@@ -111,7 +158,7 @@ margin_left = 8.0
 margin_top = 8.0
 margin_right = 88.0
 margin_bottom = 16.0
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 8 )
 text = "Новая игра"
 
 [node name="authors" type="Label" parent="game_menu"]
@@ -119,7 +166,7 @@ margin_left = 8.0
 margin_top = 24.0
 margin_right = 56.0
 margin_bottom = 32.0
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 8 )
 text = "Авторы"
 
 [node name="exit" type="Label" parent="game_menu"]
@@ -127,16 +174,16 @@ margin_left = 8.0
 margin_top = 40.0
 margin_right = 48.0
 margin_bottom = 48.0
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 8 )
 text = "Выход"
 
 [node name="intro_music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
+stream = ExtResource( 9 )
 autoplay = true
 script = SubResource( 2 )
 
 [node name="main_theme" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 7 )
+stream = ExtResource( 10 )
 
 [node name="main_animation" type="AnimationPlayer" parent="."]
 autoplay = "show"

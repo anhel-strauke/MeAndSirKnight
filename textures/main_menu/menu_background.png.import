@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/title.png-9bd8ab3ac9a46ff08cecb25074bec3e7.stex"
+path="res://.import/menu_background.png-a67d67020dbbddbf2083647ee4255080.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/title.png"
-dest_files=[ "res://.import/title.png-9bd8ab3ac9a46ff08cecb25074bec3e7.stex" ]
+source_file="res://textures/main_menu/menu_background.png"
+dest_files=[ "res://.import/menu_background.png-a67d67020dbbddbf2083647ee4255080.stex" ]
 
 [params]
 
@@ -23,7 +23,7 @@ flags/repeat=0
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
-flags/srgb=2
+flags/srgb=0
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false

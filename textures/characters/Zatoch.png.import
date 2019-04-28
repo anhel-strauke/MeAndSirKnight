@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/title.png-9bd8ab3ac9a46ff08cecb25074bec3e7.stex"
+path="res://.import/Zatoch.png-a7fe2c72c0ba7db94777a0391c6e268f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/title.png"
-dest_files=[ "res://.import/title.png-9bd8ab3ac9a46ff08cecb25074bec3e7.stex" ]
+source_file="res://textures/characters/Zatoch.png"
+dest_files=[ "res://.import/Zatoch.png-a7fe2c72c0ba7db94777a0391c6e268f.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

@@ -33,11 +33,13 @@ func set_cursor_to_item(item: int):
 		cursor.visible = false
 
 func _on_main_animation_finished(anim_name):
-	if anim_name == "show":
-		print("Starting cursor")
-		cursor_enabled = true
-		cursor.set_visible(true)
-		set_cursor_to_item(0)
+	pass
+		
+		
+func _activate_menu():
+	cursor_enabled = true
+	cursor.set_visible(true)
+	set_cursor_to_item(0)
 
 func _input(event):
 	#if not event is InputEventMouse:
@@ -57,21 +59,21 @@ func _input(event):
 		if event.get_button_index() == BUTTON_LEFT and event.is_pressed():
 			# TODO: Play sound
 			execute_action(current_item)
-	elif event.is_action_pressed("ui_down"):
-		var item = current_item + 1
-		if item >= len(menu_items):
-			item = 0
-		set_cursor_to_item(item)
-		# TODO: Play sound
-	elif event.is_action_pressed("ui_up"):
-		var item = current_item - 1
-		if item < 0:
-			item = len(menu_items) - 1
-		set_cursor_to_item(item)
-		# TODO: Play sound
-	elif event.is_action_pressed("ui_accept"):
-		# TODO: Play sound
-		execute_action(current_item)
+#	elif event.is_action_pressed("ui_down"):
+#		var item = current_item + 1
+#		if item >= len(menu_items):
+#			item = 0
+#		set_cursor_to_item(item)
+#		# TODO: Play sound
+#	elif event.is_action_pressed("ui_up"):
+#		var item = current_item - 1
+#		if item < 0:
+#			item = len(menu_items) - 1
+#		set_cursor_to_item(item)
+#		# TODO: Play sound
+#	elif event.is_action_pressed("ui_accept"):
+#		# TODO: Play sound
+#		execute_action(current_item)
 
 func execute_action(menu_item: int):
 	match menu_item:
