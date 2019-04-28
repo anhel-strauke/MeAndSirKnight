@@ -177,7 +177,6 @@ z_index = 5
 texture = ExtResource( 4 )
 
 [node name="weapon" type="Sprite" parent="game_panel/UInode/we_sword"]
-modulate = Color( 1, 1, 1, 0.170859 )
 scale = Vector2( 0.821817, 0.821817 )
 z_index = 5
 texture = ExtResource( 8 )
@@ -235,7 +234,6 @@ z_index = 5
 texture = ExtResource( 4 )
 
 [node name="weapon" type="Sprite" parent="game_panel/UInode/we_axe"]
-modulate = Color( 1, 1, 1, 0.238291 )
 z_index = 5
 texture = ExtResource( 10 )
 
@@ -293,7 +291,6 @@ z_index = 5
 texture = ExtResource( 4 )
 
 [node name="weapon" type="Sprite" parent="game_panel/UInode/we_bucket"]
-modulate = Color( 1, 1, 1, 0.858227 )
 z_index = 5
 texture = ExtResource( 12 )
 
