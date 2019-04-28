@@ -14,7 +14,11 @@ var dimmed = false
 var mouse_over_now = false
 
 var cooldown = null
-
+func set_tip(var state):
+	if(state):
+		$tip.play("helpScale")
+	else:
+		$tip.stop(true)
 
 
 func set_selected(var state):
@@ -53,6 +57,7 @@ func set_dimmed(var state):
 	 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	set_tip(false)
 	set_selected(false)
 	set_dimmed(false)
 	connect("mouse_entered", self, "_set_mouse_over")
@@ -68,9 +73,11 @@ func is_mouse_over():
 	return mouse_over_now
 
 func _set_mouse_over():
+	set_tip(true)
 	mouse_over_now = true
 
 func _reset_mouse_over():
+	set_tip(false)
 	mouse_over_now = false
 
 func _on_weaponElement_input_event(viewport, event, shape_idx):
