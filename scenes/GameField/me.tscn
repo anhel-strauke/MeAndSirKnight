@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/GameField/me.gd" type="Script" id=1]
 [ext_resource path="res://textures/characters/Me.png" type="Texture" id=2]
-[ext_resource path="res://textures/bucket_icon.png" type="Texture" id=3]
-[ext_resource path="res://textures/axe_icon.png" type="Texture" id=4]
-[ext_resource path="res://textures/sword_icon.png" type="Texture" id=5]
+[ext_resource path="res://textures/characters/Zatoch.png" type="Texture" id=3]
+[ext_resource path="res://textures/bucket_icon.png" type="Texture" id=4]
+[ext_resource path="res://textures/axe_icon.png" type="Texture" id=5]
+[ext_resource path="res://textures/sword_icon.png" type="Texture" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle_give"
@@ -20,6 +21,42 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Me:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("hands_overlay:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("me_repair:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -37,65 +74,138 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1 ]
 }
-
-[sub_resource type="Animation" id=3]
-resource_name = "repair"
-length = 0.5
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Me:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 0.505882, 0.533333, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 0.505882, 0.533333, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 0.505882, 0.533333, 0, 1 ) ]
-}
 tracks/1/type = "value"
-tracks/1/path = NodePath("Me:frame")
+tracks/1/path = NodePath("Me:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 2, 3 ]
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("me_repair:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("hands_overlay:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "repair"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Me:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("hands_overlay:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("me_repair:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("hands_overlay:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 0, 1, 2 ]
 }
 
 [node name="Me" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="Me" type="Sprite" parent="."]
+visible = false
 position = Vector2( 0, -89 )
 texture = ExtResource( 2 )
 centered = false
 hframes = 4
-frame = 2
+frame = 3
 
-[node name="weapon" type="Node2D" parent="Me"]
-position = Vector2( 0, 89 )
-
-[node name="bucket" type="Sprite" parent="Me/weapon"]
-visible = false
-position = Vector2( 42, -45 )
+[node name="me_repair" type="Sprite" parent="."]
+position = Vector2( 46, -42 )
 texture = ExtResource( 3 )
+hframes = 4
+frame = 3
 
-[node name="axe" type="Sprite" parent="Me/weapon"]
+[node name="weapon" type="Node2D" parent="."]
+position = Vector2( 1, 7 )
+
+[node name="bucket" type="Sprite" parent="weapon"]
 visible = false
 position = Vector2( 42, -45 )
 texture = ExtResource( 4 )
-flip_v = true
 
-[node name="sword" type="Sprite" parent="Me/weapon"]
+[node name="axe" type="Sprite" parent="weapon"]
 visible = false
-position = Vector2( 44, -44 )
+position = Vector2( 42, -45 )
 texture = ExtResource( 5 )
 flip_v = true
+
+[node name="sword" type="Sprite" parent="weapon"]
+visible = false
+position = Vector2( 44, -44 )
+texture = ExtResource( 6 )
+flip_v = true
+
+[node name="hands_overlay" type="Sprite" parent="."]
+position = Vector2( 46, -42 )
+texture = ExtResource( 3 )
+hframes = 4
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/idle_give = SubResource( 1 )
