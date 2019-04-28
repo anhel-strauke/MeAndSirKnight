@@ -90,6 +90,32 @@ export var enemies = {
 				"weapons_avail": ["sword", "axe", "bucket"],
 				"actions_avail": ["give", "repair", "drop"],
 				"dialog": ["Это ещё\nчто?", "!"]
+			},
+		"dragon": {
+				"title": "Elder Ninja Dragon",
+				"hitpoints": 800,
+				"attacks": [
+					{
+						"type": "tail",
+						"min_damage": 25,
+						"max_damage": 40,
+						"cooldown_time": 5,
+						"probability": 3,
+						"effect": "tail"
+					},
+					{
+						"type": "fire",
+						"min_damage": 10,
+						"max_damage": 30,
+						"cooldown_time": 7,
+						"probability": 2,
+						"effect": "fire"
+					}
+				],
+				"music": "enemy1.ogg",
+				"weapons_avail": ["sword", "axe", "bucket"],
+				"actions_avail": ["give", "repair", "drop"],
+				"dialog": ["АВЕ\nМАРИЯ", "ДЕУС\nВУЛЬТ"]
 			}
 	}
 	

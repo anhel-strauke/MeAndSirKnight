@@ -53,9 +53,14 @@ func play_small_cooldown(action):
 		if act_button.item_name == action:
 			act_button.play_small_cooldown()
 			return
-
+var activeState = true
 # Internals
-
+func setEnabled():
+	can_do_actions= true
+	
+func setDisabled():
+	can_do_actions = false
+	
 func onButtonClicked(var btnName):
 	if not can_do_actions:
 		return

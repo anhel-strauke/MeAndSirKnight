@@ -19,8 +19,9 @@ func setVisibleStory():
 			$story1.visible=false
 			$story2.visible=false
 			$story3.visible=true
-#   if(currentSpriteid==3):
-##	загрузить сцену
+		if(currentSpriteid==3):
+			get_tree().change_scene("res://scenes/levels/level_1.tscn")
+
 	
 
 func _ready():

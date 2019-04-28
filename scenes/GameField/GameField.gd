@@ -95,6 +95,14 @@ func update_enemy_hits_bar(hp, maxhp):
 
 func enemy_defeated():
 	knight.on_victory()
+	
+func show_victory():
+	knight.attacking = false
+	$AnimationPlayer.play("victory")
+	
+func show_defeat():
+	$AnimationPlayer.play("defeat")
+	
 
 func begin_level(anim):
 	$AnimationPlayer.play("dialog")
