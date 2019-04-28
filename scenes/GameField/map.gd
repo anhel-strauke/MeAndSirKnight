@@ -10,15 +10,15 @@ func _ready():
 	match singletone.bos:
 		1:
 			 $X.visible=true;
-			 $X3.visible=false;
+			 $X2.visible=false;
 			 $X3.visible=false;
 		2: 
 			 $X.visible=false;
-			 $X3.visible=true;
+			 $X2.visible=true;
 			 $X3.visible=false;
 		3:
 			 $X.visible=false;
-			 $X3.visible=false;
+			 $X2.visible=false;
 			 $X3.visible=true;
 	pass # Replace with function body.
 

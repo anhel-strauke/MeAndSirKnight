@@ -64,6 +64,7 @@ texture = ExtResource( 2 )
 
 [node name="X" type="Sprite" parent="."]
 editor/display_folded = true
+visible = false
 position = Vector2( 77.12, 107.809 )
 texture = ExtResource( 3 )
 hframes = 12
@@ -75,6 +76,7 @@ anims/mapAnimation = SubResource( 1 )
 
 [node name="X2" type="Sprite" parent="."]
 editor/display_folded = true
+visible = false
 position = Vector2( 166.199, 111.954 )
 rotation = 1.18682
 texture = ExtResource( 3 )
@@ -87,6 +89,7 @@ anims/mapAnimation = SubResource( 2 )
 
 [node name="X3" type="Sprite" parent="."]
 editor/display_folded = true
+visible = false
 position = Vector2( 241.5, 87.1066 )
 rotation = 0.0523599
 texture = ExtResource( 3 )
