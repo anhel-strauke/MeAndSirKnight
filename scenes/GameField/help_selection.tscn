@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://textures/icon_animation.png" type="Texture" id=1]
+
+[sub_resource type="Animation" id=1]
+resource_name = "select"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("icon_animation:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 20 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("icon_animation:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0.235294, 0.156863, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("icon_animation:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 0.95, 0.95 ) ]
+}
+
+[node name="Node2D" type="Node2D"]
+
+[node name="icon_animation" type="Sprite" parent="."]
+modulate = Color( 1, 0.420931, 0.361539, 1 )
+scale = Vector2( 1.03628, 1.03628 )
+texture = ExtResource( 1 )
+hframes = 21
+frame = 9
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "select"
+anims/select = SubResource( 1 )
+
