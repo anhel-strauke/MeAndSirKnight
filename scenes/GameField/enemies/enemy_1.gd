@@ -26,10 +26,10 @@ func _ready():
 	min_damage = my_data["min_damage"]
 	max_damage = my_data["max_damage"]
 	cooldown_time = my_data["cooldown_time"]
-	if hitpoints <= 0:
-		hitpoints = my_data["hitpoints"]
+	hitpoints = my_data["hitpoints"]
 	total_hitpoints = hitpoints
 	time_since_attack = 0.0
+	attacking = false
 	
 func calc_damage():
 	var dmg = rand_range(min_damage, max_damage)

@@ -279,7 +279,7 @@ anims/fadein = SubResource( 4 )
 anims/victory = SubResource( 5 )
 
 [node name="overlay" type="Sprite" parent="."]
-visible = false
+modulate = Color( 1, 1, 1, 0.627451 )
 position = Vector2( 160, 90 )
 z_index = 15
 texture = ExtResource( 9 )
@@ -287,11 +287,10 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 320, 180 )
 
 [node name="defeat_lb" type="Label" parent="overlay"]
-visible = false
 margin_left = -143.0
-margin_top = 3.0
+margin_top = -21.0
 margin_right = 145.0
-margin_bottom = 35.0
+margin_bottom = 11.0
 custom_fonts/font = SubResource( 3 )
 text = "ПОТРАЧЕНО"
 
@@ -311,10 +310,11 @@ align = 1
 [connection signal="repair_start" from="background/characters/Me" to="." method="_on_Me_repair_start"]
 [connection signal="weapon_updated" from="background/characters/Me" to="background/characters/knight" method="update_weapon_hits"]
 [connection signal="damage_done" from="background/characters/knight" to="." method="transfer_damage_to_enemy"]
+[connection signal="game_over" from="background/characters/knight" to="." method="_on_knight_game_over"]
 [connection signal="hitpoints_changed" from="background/characters/knight" to="GamePanel" method="set_hero_hp"]
 [connection signal="victory" from="background/characters/knight" to="." method="_on_knight_victory"]
-[connection signal="weapon_changed" from="background/characters/knight" to="background/characters/Me" method="weapon_taken"]
 [connection signal="weapon_changed" from="background/characters/knight" to="GamePanel" method="update_knight_weapon"]
+[connection signal="weapon_changed" from="background/characters/knight" to="background/characters/Me" method="weapon_taken"]
 [connection signal="weapon_damaged" from="background/characters/knight" to="GamePanel" method="mark_weapon_damaged"]
 [connection signal="weapon_repaired" from="background/characters/knight" to="GamePanel" method="mark_weapon_repaired"]
 [connection signal="weapon_clicked" from="GamePanel" to="." method="process_weapon_click"]
