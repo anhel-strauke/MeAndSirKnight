@@ -1,10 +1,45 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/StorytellingScene.gd" type="Script" id=1]
 [ext_resource path="res://textures/black8x8.png" type="Texture" id=2]
 [ext_resource path="res://fonts/pixelfont_dynamicfont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://backgrounds/Intro1.png" type="Texture" id=4]
+[ext_resource path="res://backgrounds/Intro2.png" type="Texture" id=5]
+[ext_resource path="res://backgrounds/intro3.png" type="Texture" id=6]
 
 [sub_resource type="Animation" id=1]
+resource_name = "text"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.49808 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "text"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.49808 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=3]
 resource_name = "text"
 length = 1.5
 tracks/0/type = "value"
@@ -29,15 +64,18 @@ texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 320, 180 )
 
-[node name="Label" type="Label" parent="."]
+[node name="story1" type="Sprite" parent="."]
+editor/display_folded = true
+
+[node name="Label" type="Label" parent="story1"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 15.0
-margin_top = 135.0
-margin_right = 305.0
-margin_bottom = 167.0
+margin_left = 6.58401
+margin_top = 135.268
+margin_right = 296.584
+margin_bottom = 167.268
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.752941, 0.752941, 0.752941, 1 )
 text = "Здесь мы поговорим о скандалах, 
@@ -46,6 +84,84 @@ text = "Здесь мы поговорим о скандалах,
 clip_text = true
 max_lines_visible = 3
 
-[node name="text_anim" type="AnimationPlayer" parent="."]
+[node name="text_anim" type="AnimationPlayer" parent="story1"]
 anims/text = SubResource( 1 )
+
+[node name="story1" type="Sprite" parent="story1"]
+position = Vector2( 68, 63 )
+texture = ExtResource( 4 )
+
+[node name="story2" type="Sprite" parent="."]
+editor/display_folded = true
+visible = false
+
+[node name="Label" type="Label" parent="story2"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 21.566
+margin_top = 3.49102
+margin_right = 305.566
+margin_bottom = 51.491
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+text = "Здесь мы поговорим о скандалах, 
+интригах и расследованияхв игровой
+индустрии. Каких разработчиков "
+clip_text = true
+max_lines_visible = 3
+
+[node name="text_anim" type="AnimationPlayer" parent="story2"]
+anims/text = SubResource( 2 )
+
+[node name="story2" type="Sprite" parent="story2"]
+position = Vector2( 252.64, 117.626 )
+texture = ExtResource( 5 )
+
+[node name="story3" type="Sprite" parent="."]
+editor/display_folded = true
+visible = false
+
+[node name="Label" type="Label" parent="story3"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -1.0
+margin_right = 69.0
+margin_bottom = 178.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+text = "Здесь мы поговорим о скандалах, 
+интригах и расследованияхв игровой
+индустрии. Каких разработчиков "
+clip_text = true
+max_lines_visible = 3
+
+[node name="Label2" type="Label" parent="story3"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 249.673
+margin_top = 0.358395
+margin_right = 318.673
+margin_bottom = 179.358
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+text = "Здесь мы поговорим о скандалах, 
+интригах и расследованияхв игровой
+индустрии. Каких разработчиков "
+align = 2
+valign = 2
+clip_text = true
+max_lines_visible = 3
+
+[node name="text_anim" type="AnimationPlayer" parent="story3"]
+anims/text = SubResource( 3 )
+
+[node name="story3" type="Sprite" parent="story3"]
+position = Vector2( 160, 90 )
+texture = ExtResource( 6 )
 
