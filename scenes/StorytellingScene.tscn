@@ -65,7 +65,6 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 320, 180 )
 
 [node name="story1" type="Sprite" parent="."]
-editor/display_folded = true
 
 [node name="Label" type="Label" parent="story1"]
 anchor_left = 1.0
@@ -78,8 +77,7 @@ margin_right = 296.584
 margin_bottom = 167.268
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.752941, 0.752941, 0.752941, 1 )
-text = "Здесь мы поговорим о скандалах, 
-интригах и расследованияхв игровой
+text = "Жизнь нельзя купить или продать...
 индустрии. Каких разработчиков "
 clip_text = true
 max_lines_visible = 3
@@ -92,7 +90,6 @@ position = Vector2( 68, 63 )
 texture = ExtResource( 4 )
 
 [node name="story2" type="Sprite" parent="."]
-editor/display_folded = true
 visible = false
 
 [node name="Label" type="Label" parent="story2"]
@@ -100,15 +97,14 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 21.566
-margin_top = 3.49102
-margin_right = 305.566
-margin_bottom = 51.491
+margin_left = 20.198
+margin_top = 1.66705
+margin_right = 304.198
+margin_bottom = 49.6671
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.752941, 0.752941, 0.752941, 1 )
-text = "Здесь мы поговорим о скандалах, 
-интригах и расследованияхв игровой
-индустрии. Каких разработчиков "
+text = "Но ее можно потратить на то во что действительно веришь."
+valign = 1
 clip_text = true
 max_lines_visible = 3
 
@@ -120,7 +116,6 @@ position = Vector2( 252.64, 117.626 )
 texture = ExtResource( 5 )
 
 [node name="story3" type="Sprite" parent="."]
-editor/display_folded = true
 visible = false
 
 [node name="Label" type="Label" parent="story3"]
@@ -128,14 +123,14 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -1.0
-margin_right = 69.0
-margin_bottom = 178.0
+margin_left = 0.91198
+margin_top = 8.57584
+margin_right = 69.912
+margin_bottom = 187.576
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.752941, 0.752941, 0.752941, 1 )
-text = "Здесь мы поговорим о скандалах, 
-интригах и расследованияхв игровой
-индустрии. Каких разработчиков "
+text = "Я верю
+"
 clip_text = true
 max_lines_visible = 3
 
@@ -150,9 +145,7 @@ margin_right = 318.673
 margin_bottom = 179.358
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.752941, 0.752941, 0.752941, 1 )
-text = "Здесь мы поговорим о скандалах, 
-интригах и расследованияхв игровой
-индустрии. Каких разработчиков "
+text = "В сэра Седрика"
 align = 2
 valign = 2
 clip_text = true
