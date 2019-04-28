@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scenes/GameField/game_panel.gd" type="Script" id=1]
 [ext_resource path="res://textures/Full_panel.png" type="Texture" id=2]
@@ -19,6 +19,23 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16.1256, 16.4804 )
 
+[sub_resource type="Animation" id=5]
+resource_name = "helpScale"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("weapon:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
 [sub_resource type="Animation" id=2]
 resource_name = "helpScale"
 length = 0.3
@@ -30,10 +47,78 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "helpScale"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("weapon:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "helpScale"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("weapon:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "helpScale"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("weapon:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "helpScale"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("weapon:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [node name="GamePanel" type="Node2D"]
@@ -69,6 +154,10 @@ texture = ExtResource( 5 )
 visible = false
 z_index = 5
 
+[node name="tip" type="AnimationPlayer" parent="game_panel/UInode/we_give"]
+autoplay = "helpScale"
+anims/helpScale = SubResource( 5 )
+
 [node name="button_cooldown" parent="game_panel/UInode/we_give" instance=ExtResource( 7 )]
 z_index = 5
 
@@ -88,15 +177,15 @@ z_index = 5
 texture = ExtResource( 4 )
 
 [node name="weapon" type="Sprite" parent="game_panel/UInode/we_sword"]
+modulate = Color( 1, 1, 1, 0.170859 )
 scale = Vector2( 0.821817, 0.821817 )
 z_index = 5
 texture = ExtResource( 8 )
 
 [node name="selection" parent="game_panel/UInode/we_sword" instance=ExtResource( 6 )]
-modulate = Color( 0.933333, 0.6, 0.0470588, 1 )
 z_index = 5
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="game_panel/UInode/we_sword"]
+[node name="tip" type="AnimationPlayer" parent="game_panel/UInode/we_sword"]
 autoplay = "helpScale"
 anims/helpScale = SubResource( 2 )
 
@@ -123,6 +212,10 @@ texture = ExtResource( 9 )
 visible = false
 z_index = 5
 
+[node name="tip" type="AnimationPlayer" parent="game_panel/UInode/we_repair"]
+autoplay = "helpScale"
+anims/helpScale = SubResource( 6 )
+
 [node name="button_cooldown" parent="game_panel/UInode/we_repair" instance=ExtResource( 7 )]
 z_index = 5
 
@@ -142,12 +235,17 @@ z_index = 5
 texture = ExtResource( 4 )
 
 [node name="weapon" type="Sprite" parent="game_panel/UInode/we_axe"]
+modulate = Color( 1, 1, 1, 0.238291 )
 z_index = 5
 texture = ExtResource( 10 )
 
 [node name="selection" parent="game_panel/UInode/we_axe" instance=ExtResource( 6 )]
 visible = false
 z_index = 5
+
+[node name="tip" type="AnimationPlayer" parent="game_panel/UInode/we_axe"]
+autoplay = "helpScale"
+anims/helpScale = SubResource( 3 )
 
 [node name="we_drop" type="Area2D" parent="game_panel/UInode"]
 position = Vector2( 20.7413, 91.6647 )
@@ -172,6 +270,10 @@ texture = ExtResource( 11 )
 visible = false
 z_index = 5
 
+[node name="tip" type="AnimationPlayer" parent="game_panel/UInode/we_drop"]
+autoplay = "helpScale"
+anims/helpScale = SubResource( 7 )
+
 [node name="button_cooldown" parent="game_panel/UInode/we_drop" instance=ExtResource( 7 )]
 z_index = 5
 
@@ -191,12 +293,17 @@ z_index = 5
 texture = ExtResource( 4 )
 
 [node name="weapon" type="Sprite" parent="game_panel/UInode/we_bucket"]
+modulate = Color( 1, 1, 1, 0.858227 )
 z_index = 5
 texture = ExtResource( 12 )
 
 [node name="selection" parent="game_panel/UInode/we_bucket" instance=ExtResource( 6 )]
 visible = false
 z_index = 5
+
+[node name="tip" type="AnimationPlayer" parent="game_panel/UInode/we_bucket"]
+autoplay = "helpScale"
+anims/helpScale = SubResource( 4 )
 
 [node name="status_label" type="Label" parent="game_panel/UInode"]
 margin_left = 103.49

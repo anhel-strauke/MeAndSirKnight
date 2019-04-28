@@ -15,6 +15,13 @@ var mouse_over_now = false
 
 var cooldown = null
 
+#func set_tip(var state):
+#	$tip.play("helpScale")
+#	$tip
+	
+	
+	
+
 func set_selected(var state):
 	$selection.visible = state
 	selected = state
