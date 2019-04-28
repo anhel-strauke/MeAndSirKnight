@@ -193,6 +193,9 @@ func prepare_for_battle():
 	is_hitting = false
 	time_since_action = 0.0
 	effect_nodes["fire"].visible = false
+	$AnimationPlayer.play("idle")
+	$AnimationPlayer.seek(0.2, true)
+	$AnimationPlayer.stop()
 
 func _find_current_effect(effect_name):
 	for effect in current_effects:

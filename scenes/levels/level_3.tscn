@@ -31,7 +31,7 @@ position = Vector2( -36, -45 )
 current_enemy = "scorpion"
 
 [node name="scorpion" parent="." instance=ExtResource( 3 )]
-position = Vector2( 141, 108 )
+position = Vector2( 206, 108 )
 z_index = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -40,6 +40,7 @@ anims/start = SubResource( 1 )
 
 [connection signal="begin_battle" from="GameField" to="scorpion" method="begin_battle"]
 [connection signal="damage_done" from="GameField" to="scorpion" method="take_damage"]
+[connection signal="reset_battle" from="GameField" to="scorpion" method="_ready"]
 [connection signal="damage_done" from="scorpion" to="GameField" method="transfer_damage_to_knight"]
 [connection signal="finally_dead" from="scorpion" to="GameField" method="enemy_defeated"]
 [connection signal="hp_changed" from="scorpion" to="GameField" method="update_enemy_hits_bar"]

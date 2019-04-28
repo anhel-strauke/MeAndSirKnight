@@ -15,6 +15,7 @@ export var current_enemy = "enemy_1"
 
 signal damage_done(damage)
 signal begin_battle()
+signal reset_battle()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -72,7 +73,7 @@ func _on_Me_repair_going(progress):
 
 
 func _on_knight_victory():
-	pass # Replace with function body.
+	show_victory()
 
 
 func transfer_damage_to_enemy(damage):
@@ -111,3 +112,13 @@ func start_battle(anim):
 	if anim == "dialog":
 		knight.attacking = true
 		emit_signal("begin_battle")
+	elif anim == "defeat":
+		_ready()
+		$AnimationPlayer.play("fadein")
+		get_node("../AnimationPlayer").play("start")
+		emit_signal("reset_battle")
+	elif anim == "victory":
+		$music_player.stop()
+
+func _on_knight_game_over():
+	show_defeat()
