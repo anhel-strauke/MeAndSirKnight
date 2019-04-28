@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/GameField/map.gd" type="Script" id=1]
 [ext_resource path="res://textures/map.png" type="Texture" id=2]
 [ext_resource path="res://textures/X.png" type="Texture" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "mapAnimation"
@@ -19,6 +20,12 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0, 11 ]
+}
+
+[sub_resource type="Curve2D" id=4]
+bake_interval = 1.0
+_data = {
+"points": PoolVector2Array( 8.3667, -8.38542, -8.3667, 8.38542, -260, -140, 0, 0, 0, 0, -270, -130, 5.75934, -6.37554, -5.75934, 6.37554, -270, -130, 4.82012, -5.21087, -4.82012, 5.21087, -310, -100, 5.87214, -2.00613, -5.87214, 2.00613, -330, -80 )
 }
 
 [sub_resource type="Animation" id=2]
@@ -63,8 +70,6 @@ position = Vector2( 160, 90 )
 texture = ExtResource( 2 )
 
 [node name="X" type="Sprite" parent="."]
-editor/display_folded = true
-visible = false
 position = Vector2( 77.12, 107.809 )
 texture = ExtResource( 3 )
 hframes = 12
@@ -73,6 +78,16 @@ frame = 3
 [node name="AnimationPlayer" type="AnimationPlayer" parent="X"]
 autoplay = "mapAnimation"
 anims/mapAnimation = SubResource( 1 )
+
+[node name="Path2D" type="Path2D" parent="X"]
+position = Vector2( 282.88, 122.191 )
+curve = SubResource( 4 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="X/Path2D"]
+
+[node name="Sprite" type="Sprite" parent="X/Path2D/PathFollow2D"]
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 4 )
 
 [node name="X2" type="Sprite" parent="."]
 editor/display_folded = true
