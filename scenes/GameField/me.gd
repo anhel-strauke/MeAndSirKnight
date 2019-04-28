@@ -27,9 +27,9 @@ var weapon_repair_total_time = {}
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	weapons = {
-		"axe": $Me/weapon/axe,
-		"sword": $Me/weapon/sword,
-		"bucket": $Me/weapon/bucket
+		"axe": $weapon/axe,
+		"sword": $weapon/sword,
+		"bucket": $weapon/bucket
 	}
 	for weapon_name in weapon_data:
 		weapon_repair_time[weapon_name] = 0.0
