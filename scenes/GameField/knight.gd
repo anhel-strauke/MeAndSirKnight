@@ -27,6 +27,7 @@ signal weapon_changed()
 signal weapon_damaged(weapon)
 signal weapon_repaired(weapon)
 signal victory()
+signal game_over()
 
 const MIN_DAMAGE = 2.0
 
@@ -119,6 +120,7 @@ func take_damage(damage):
 		if hitpoints <= 0:
 			hitpoints = 0
 			attacking = false
+			drop_dead()
 
 func on_victory():
 	attacking = false
@@ -212,3 +214,9 @@ func do_bend():
 	for wpn in weapon_nodes:
 		weapon_nodes[wpn].visible = false
 	$AnimationPlayer.play("bend")
+
+func drop_dead():
+	$AnimationPlayer.play("death")
+
+func _death_completed():
+	emit_signal("game_over")

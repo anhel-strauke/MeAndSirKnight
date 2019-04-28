@@ -61,7 +61,6 @@ func do_idle():
 	is_idle = true
 	
 func do_some_attack():
-	print("Phoenix ATTAC!")
 	var i = rand_range(0, len(attack_slots))
 	if i == len(attack_slots):
 		i = 0
@@ -92,7 +91,6 @@ func _make_firewall_effect():
 		emit_signal("put_effect", attacks[current_attack]["effect"])
 
 func _on_AnimationPlayer_animation_finished(anim_name):
-	print("Anim finished: ", anim_name)
 	if anim_name == "attack" or anim_name == "fire":
 		time_since_attack = 0
 		do_idle()
