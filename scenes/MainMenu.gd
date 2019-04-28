@@ -14,7 +14,6 @@ func _ready():
 	cursor = $game_menu/main_menu_cursor
 	menu_items = [
 		$game_menu/new_game,
-		$game_menu/continue_game,
 		$game_menu/authors,
 		$game_menu/exit
 	]
@@ -77,14 +76,10 @@ func _input(event):
 func execute_action(menu_item: int):
 	match menu_item:
 		0:
-			# TODO: New Game
-			pass
+			get_tree().change_scene("res://scenes/levels/level_1.tscn")
 		1:
-			# TODO: continue game
-			pass
-		2:
 			# TODO: Authors
 			pass
-		3:
+		2:
 			get_tree().quit()
 

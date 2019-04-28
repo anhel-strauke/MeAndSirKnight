@@ -1,11 +1,12 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://backgrounds/main_menu.png" type="Texture" id=2]
 [ext_resource path="res://textures/title.png" type="Texture" id=3]
 [ext_resource path="res://textures/main_menu_cursor.png" type="Texture" id=4]
 [ext_resource path="res://fonts/pixelfont_dynamicfont.tres" type="DynamicFont" id=5]
-[ext_resource path="res://sound/music/Sunstrider.ogg" type="AudioStream" id=6]
+[ext_resource path="res://sound/music/intro.ogg" type="AudioStream" id=6]
+[ext_resource path="res://sound/music/main.ogg" type="AudioStream" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "blink"
@@ -113,37 +114,33 @@ margin_bottom = 16.0
 custom_fonts/font = ExtResource( 5 )
 text = "Новая игра"
 
-[node name="continue_game" type="Label" parent="game_menu"]
-margin_left = 8.0
-margin_top = 24.0
-margin_right = 88.0
-margin_bottom = 32.0
-custom_fonts/font = ExtResource( 5 )
-text = "Продолжить"
-
 [node name="authors" type="Label" parent="game_menu"]
 margin_left = 8.0
-margin_top = 40.0
+margin_top = 24.0
 margin_right = 56.0
-margin_bottom = 48.0
+margin_bottom = 32.0
 custom_fonts/font = ExtResource( 5 )
 text = "Авторы"
 
 [node name="exit" type="Label" parent="game_menu"]
 margin_left = 8.0
-margin_top = 56.0
+margin_top = 40.0
 margin_right = 48.0
-margin_bottom = 64.0
+margin_bottom = 48.0
 custom_fonts/font = ExtResource( 5 )
 text = "Выход"
 
-[node name="music_player" type="AudioStreamPlayer" parent="."]
+[node name="intro_music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 autoplay = true
 script = SubResource( 2 )
+
+[node name="main_theme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
 
 [node name="main_animation" type="AnimationPlayer" parent="."]
 autoplay = "show"
 anims/show = SubResource( 3 )
 
+[connection signal="finished" from="intro_music" to="main_theme" method="play"]
 [connection signal="animation_finished" from="main_animation" to="." method="_on_main_animation_finished"]

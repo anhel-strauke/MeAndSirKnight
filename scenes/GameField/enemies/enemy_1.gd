@@ -7,13 +7,14 @@ extends Node2D
 var enemy_data = preload("res://data/game_data.gd").new().enemies
 
 signal damage_done(damage)
-signal hp_changed(hp)
+signal hp_changed(hp, maxhp)
 signal dying()
 signal finally_dead()
 
 export var enemy_type = "enemy_1"
 export var attacking = false
 export var hitpoints: float = 0.0
+var total_hitpoints = 1.0
 
 var min_damage = 0.0
 var max_damage = 0.0
@@ -28,11 +29,16 @@ func _ready():
 	cooldown_time = my_data["cooldown_time"]
 	if hitpoints <= 0:
 		hitpoints = my_data["hitpoints"]
+	total_hitpoints = hitpoints
 	time_since_attack = 0.0
 	
 func calc_damage():
 	var dmg = rand_range(min_damage, max_damage)
 	return dmg
+
+func _on_hit():
+	var dmg = calc_damage()
+	emit_signal("damage_done", dmg)
 
 func do_hit():
 	$AnimationPlayer.play("hit")
@@ -44,7 +50,7 @@ func take_damage(damage):
 		if hitpoints <= 0:
 			become_dead()
 			hitpoints = 0
-		emit_signal("hp_changed", hitpoints)
+		emit_signal("hp_changed", hitpoints, total_hitpoints)
 
 func become_dead():
 	emit_signal("dying")
