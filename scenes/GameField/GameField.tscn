@@ -1,13 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/GameField/GameField.gd" type="Script" id=1]
 [ext_resource path="res://scenes/GameField/me.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/GameField/knight.tscn" type="PackedScene" id=3]
-[ext_resource path="res://textures/dialog_sir_knight.png" type="Texture" id=4]
-[ext_resource path="res://textures/dialog_podrik.png" type="Texture" id=5]
-[ext_resource path="res://scenes/GameField/dialog_bubble.gd" type="Script" id=6]
-[ext_resource path="res://fonts/pixelfont_dynamicfont_8.tres" type="DynamicFont" id=7]
-[ext_resource path="res://scenes/GameField/GamePanel.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/GameField/GamePanel.tscn" type="PackedScene" id=4]
 
 [node name="GameField" type="Node2D"]
 script = ExtResource( 1 )
@@ -24,30 +20,7 @@ position = Vector2( 1, 144 )
 position = Vector2( 53, 144 )
 attacking = true
 
-[node name="dialog_sir_knight" type="Sprite" parent="background/characters"]
-visible = false
-position = Vector2( 64, 40 )
-texture = ExtResource( 4 )
-
-[node name="dialog_podrik" type="Sprite" parent="background/characters"]
-visible = false
-position = Vector2( 44, 50 )
-texture = ExtResource( 5 )
-script = ExtResource( 6 )
-
-[node name="text" type="Label" parent="background/characters/dialog_podrik"]
-margin_left = -32.0
-margin_top = -25.0
-margin_right = 32.0
-rect_clip_content = true
-custom_fonts/font = ExtResource( 7 )
-custom_colors/font_color = Color( 0.207843, 0.109804, 0, 1 )
-text = "Deus
-Vult"
-valign = 1
-clip_text = true
-
-[node name="GamePanel" parent="." instance=ExtResource( 8 )]
+[node name="GamePanel" parent="." instance=ExtResource( 4 )]
 z_as_relative = false
 
 [node name="music_player" type="AudioStreamPlayer" parent="."]
@@ -59,8 +32,8 @@ volume_db = -11.107
 [connection signal="damage_done" from="background/characters/knight" to="." method="transfer_damage_to_enemy"]
 [connection signal="hitpoints_changed" from="background/characters/knight" to="GamePanel" method="set_hero_hp"]
 [connection signal="victory" from="background/characters/knight" to="." method="_on_knight_victory"]
-[connection signal="weapon_changed" from="background/characters/knight" to="GamePanel" method="update_knight_weapon"]
 [connection signal="weapon_changed" from="background/characters/knight" to="background/characters/Me" method="weapon_taken"]
+[connection signal="weapon_changed" from="background/characters/knight" to="GamePanel" method="update_knight_weapon"]
 [connection signal="weapon_damaged" from="background/characters/knight" to="GamePanel" method="mark_weapon_damaged"]
 [connection signal="weapon_repaired" from="background/characters/knight" to="GamePanel" method="mark_weapon_repaired"]
 [connection signal="weapon_clicked" from="GamePanel" to="." method="process_weapon_click"]
