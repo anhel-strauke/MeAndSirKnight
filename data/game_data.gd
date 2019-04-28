@@ -36,7 +36,7 @@ export var enemies = {
 				"cooldown_time": 2,
 				"music": "enemy1.ogg",
 				"weapons_avail": ["sword", "axe"],
-				"actions_avail": ["give", "repair"]
+				"actions_avail": ["give", "repair", "drop"]
 			}
 	}
 	
