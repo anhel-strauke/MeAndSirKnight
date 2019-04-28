@@ -17,6 +17,9 @@ var max_damage = 0.0
 var cooldown_time = 0.0
 var time_since_attack = 0.0
 
+func begin_battle():
+	attacking = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var my_data = enemy_data[enemy_type]
@@ -64,4 +67,3 @@ func _process(delta):
 			do_hit()
 		else:
 			time_since_attack += delta
-

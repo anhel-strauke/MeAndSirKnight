@@ -7,6 +7,7 @@
 script = ExtResource( 1 )
 
 [node name="dialogSprite" type="Sprite" parent="."]
+position = Vector2( 60.8262, 17.5571 )
 texture = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="dialogSprite"]

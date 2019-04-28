@@ -1,13 +1,217 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/GameField/GameField.gd" type="Script" id=1]
 [ext_resource path="res://scenes/GameField/me.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/GameField/knight.tscn" type="PackedScene" id=3]
 [ext_resource path="res://textures/dialog_sir_knight.png" type="Texture" id=4]
-[ext_resource path="res://textures/dialog_podrik.png" type="Texture" id=5]
-[ext_resource path="res://scenes/GameField/dialog_bubble.gd" type="Script" id=6]
-[ext_resource path="res://fonts/pixelfont_dynamicfont_8.tres" type="DynamicFont" id=7]
+[ext_resource path="res://fonts/pixelfont_dynamicfont_8.tres" type="DynamicFont" id=5]
+[ext_resource path="res://textures/dialog_podrik.png" type="Texture" id=6]
+[ext_resource path="res://scenes/GameField/dialog_bubble.gd" type="Script" id=7]
 [ext_resource path="res://scenes/GameField/GamePanel.tscn" type="PackedScene" id=8]
+[ext_resource path="res://textures/black8x8.png" type="Texture" id=9]
+[ext_resource path="res://fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=10]
+
+[sub_resource type="Animation" id=2]
+resource_name = "defeat"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("overlay:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("overlay:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 2.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.627451 ), Color( 1, 1, 1, 0.627451 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("overlay/victory_lb:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("overlay/defeat_lb:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "dialog"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("background/characters/bubble_squire:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("background/characters/bubble_knight:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.7, 2.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "fadein"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("overlay:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("overlay/defeat_lb:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("overlay/victory_lb:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("overlay:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "victory"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("overlay:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("overlay:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 2.6, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 1, 1, 1, 0.631373 ), Color( 1, 1, 1, 0.631373 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("overlay/defeat_lb:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("overlay/victory_lb:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("overlay/victory_lb:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2.6, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 10 )
 
 [node name="GameField" type="Node2D"]
 script = ExtResource( 1 )
@@ -22,28 +226,42 @@ position = Vector2( 1, 144 )
 
 [node name="knight" parent="background/characters" instance=ExtResource( 3 )]
 position = Vector2( 53, 144 )
-attacking = true
 
-[node name="dialog_sir_knight" type="Sprite" parent="background/characters"]
+[node name="bubble_knight" type="Sprite" parent="background/characters"]
 visible = false
-position = Vector2( 64, 40 )
+position = Vector2( 60, 39 )
 texture = ExtResource( 4 )
 
-[node name="dialog_podrik" type="Sprite" parent="background/characters"]
+[node name="text" type="Label" parent="background/characters/bubble_knight"]
+margin_left = -32.0
+margin_top = -17.0
+margin_right = 32.0
+margin_bottom = 8.0
+rect_clip_content = true
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.0784314, 0.14902, 0.333333, 1 )
+text = "Deus
+Vult"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="bubble_squire" type="Sprite" parent="background/characters"]
 visible = false
 position = Vector2( 44, 50 )
-texture = ExtResource( 5 )
-script = ExtResource( 6 )
+texture = ExtResource( 6 )
+script = ExtResource( 7 )
 
-[node name="text" type="Label" parent="background/characters/dialog_podrik"]
+[node name="text" type="Label" parent="background/characters/bubble_squire"]
 margin_left = -32.0
 margin_top = -25.0
 margin_right = 32.0
 rect_clip_content = true
-custom_fonts/font = ExtResource( 7 )
+custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0.207843, 0.109804, 0, 1 )
 text = "Deus
 Vult"
+align = 1
 valign = 1
 clip_text = true
 
@@ -52,6 +270,42 @@ z_as_relative = false
 
 [node name="music_player" type="AudioStreamPlayer" parent="."]
 volume_db = -11.107
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "fadein"
+anims/defeat = SubResource( 2 )
+anims/dialog = SubResource( 1 )
+anims/fadein = SubResource( 4 )
+anims/victory = SubResource( 5 )
+
+[node name="overlay" type="Sprite" parent="."]
+visible = false
+position = Vector2( 160, 90 )
+z_index = 15
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 320, 180 )
+
+[node name="defeat_lb" type="Label" parent="overlay"]
+visible = false
+margin_left = -143.0
+margin_top = 3.0
+margin_right = 145.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 3 )
+text = "ПОТРАЧЕНО"
+
+[node name="victory_lb" type="Label" parent="overlay"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -144.0
+margin_top = -68.0
+margin_right = 144.0
+margin_bottom = -1.0
+custom_fonts/font = SubResource( 3 )
+text = "ВРАГ 
+ПОВЕРЖЕН"
+align = 1
 
 [connection signal="repair_going" from="background/characters/Me" to="." method="_on_Me_repair_going"]
 [connection signal="repair_start" from="background/characters/Me" to="." method="_on_Me_repair_start"]
@@ -64,3 +318,4 @@ volume_db = -11.107
 [connection signal="weapon_damaged" from="background/characters/knight" to="GamePanel" method="mark_weapon_damaged"]
 [connection signal="weapon_repaired" from="background/characters/knight" to="GamePanel" method="mark_weapon_repaired"]
 [connection signal="weapon_clicked" from="GamePanel" to="." method="process_weapon_click"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="start_battle"]

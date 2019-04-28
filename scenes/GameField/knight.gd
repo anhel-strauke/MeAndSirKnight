@@ -35,6 +35,9 @@ var is_weapon_going_down = true
 var is_hitting = false
 var time_since_action = 0.0
 var is_bend = false
+var bucket_full = false
+
+var water = null
 
 var effect_nodes = {}
 
@@ -48,8 +51,12 @@ func _ready():
 		
 	weapon_nodes = {
 			"sword": $knight_attack/weapon/sword,
-			"axe": $knight_attack/weapon/axe
+			"axe": $knight_attack/weapon/axe,
+			"bucket": $knight_attack/weapon/bucket
 		}
+	
+	water = $knight_attack/water
+	water.visible = false
 		
 	effect_nodes = {
 			"fire": $knight_attack/effects/fire
@@ -103,6 +110,8 @@ func _process(delta):
 	
 
 func do_attack():
+	if weapon_type == "bucket" and bucket_full:
+		stop_effect("fire")
 	$AnimationPlayer.play("hit")
 	time_since_action = 0.0
 	is_weapon_going_down = false
@@ -121,6 +130,10 @@ func take_damage(damage):
 			hitpoints = 0
 			attacking = false
 			drop_dead()
+
+func take_tail_damage(damage):
+	if hitpoints > 0 and not is_bend:
+		take_damage(damage)
 
 func on_victory():
 	attacking = false
@@ -143,6 +156,9 @@ func replace_weapon(new_weapon_type):
 		weapon_type = new_weapon_type
 		attack_time = weapon_data[weapon_type]["attack_time"]
 		cooldown_time = weapon_data[weapon_type]["cooldown_time"]
+		if weapon_type == "bucket":
+			bucket_full = true
+			water.visible = true
 		
 func set_next_weapon(new_weapon_type):
 	next_weapon = new_weapon_type
@@ -151,8 +167,9 @@ func can_replace_weapon():
 	return is_weapon_going_down and not is_hitting
 
 func _on_animation_finished(anim_name):
-	if anim_name == "hit":
+	if anim_name == "hit" or anim_name == "damage":
 		is_hitting = false
+		water.visible = false
 	elif anim_name == "victory":
 		emit_signal("victory")
 	elif anim_name == "bend":
