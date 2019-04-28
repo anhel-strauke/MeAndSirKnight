@@ -507,7 +507,6 @@ texture = ExtResource( 3 )
 centered = false
 vframes = 2
 hframes = 5
-frame = 4
 
 [node name="weapon" type="Node2D" parent="knight_attack"]
 position = Vector2( 0, 101 )
@@ -521,7 +520,6 @@ position = Vector2( 0, -100 )
 texture = ExtResource( 4 )
 centered = false
 hframes = 5
-frame = 4
 
 [node name="axe" type="Node2D" parent="knight_attack/weapon"]
 visible = false
@@ -530,7 +528,6 @@ visible = false
 position = Vector2( 43, -50 )
 texture = ExtResource( 5 )
 hframes = 5
-frame = 4
 
 [node name="bucket" type="Node2D" parent="knight_attack/weapon"]
 
