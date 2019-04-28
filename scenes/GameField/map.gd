@@ -22,6 +22,18 @@ func _ready():
 			 $X3.visible=true;
 	pass 
 	
+	
+func go_next_level():
+	var next = ""
+	match singletone.bos:
+		1:
+			next = "res://scenes/levels/level_2.tscn"
+		2:
+			next = "res://scenes/levels/level_3.tscn"
+		3:
+			next = "res://scenes/levels/level_4.tscn"
+	
+	get_tree().change_scene(next)
 	# Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

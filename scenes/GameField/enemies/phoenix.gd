@@ -45,6 +45,7 @@ func prepare_for_battle():
 	total_hitpoints = hitpoints
 	time_since_attack = 0.0
 	current_cooldown = 2.0
+	attacking = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

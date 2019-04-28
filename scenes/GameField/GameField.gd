@@ -119,6 +119,15 @@ func start_battle(anim):
 		emit_signal("reset_battle")
 	elif anim == "victory":
 		$music_player.stop()
+		if current_enemy == "enemy_1":
+			singletone.bos = 1
+		elif current_enemy == "phoenix":
+			singletone.bos = 2
+		elif current_enemy == "scorpion":
+			singletone.bos = 3
+		else:
+			get_tree().change_scene("res://MainMenu.tscn")
+		get_tree().change_scene("res://scenes/GameField/map.tscn")
 
 func _on_knight_game_over():
 	show_defeat()

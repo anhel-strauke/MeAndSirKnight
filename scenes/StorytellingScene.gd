@@ -14,12 +14,12 @@ func setVisibleStory():
 			$story1.visible=false
 			$story2.visible=true
 			$story3.visible=false
-		else: 
-			currentSpriteid=3
+		elif currentSpriteid == 2:
+			currentSpriteid = 3
 			$story1.visible=false
 			$story2.visible=false
 			$story3.visible=true
-		if(currentSpriteid==3):
+		elif (currentSpriteid==3):
 			get_tree().change_scene("res://scenes/levels/level_1.tscn")
 
 	

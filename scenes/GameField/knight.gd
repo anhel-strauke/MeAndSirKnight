@@ -172,10 +172,9 @@ func _on_animation_finished(anim_name):
 		water.visible = false
 	elif anim_name == "victory":
 		emit_signal("victory")
-	elif anim_name == "bend":
-		is_bend = false
-		do_weapon_reset()
-		is_hitting = false
+	is_bend = false
+	do_weapon_reset()
+	is_hitting = false
 		
 
 func update_weapon_hits(weapon, amount):
@@ -185,12 +184,14 @@ func update_weapon_hits(weapon, amount):
 
 func prepare_for_battle():
 	hitpoints = total_hitpoints
+	weapon_type = ""
 	replace_weapon("sword")
 	for weapon_name in weapon_hit_count:
 		weapon_hit_count[weapon_name] = 0
 	next_weapon = ""
 	is_weapon_going_down = true
 	is_hitting = false
+	is_bend = false
 	time_since_action = 0.0
 	effect_nodes["fire"].visible = false
 	$AnimationPlayer.play("idle")
