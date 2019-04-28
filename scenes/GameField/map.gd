@@ -20,7 +20,9 @@ func _ready():
 			 $X.visible=false;
 			 $X2.visible=false;
 			 $X3.visible=true;
-	pass # Replace with function body.
+	pass 
+	
+	# Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
