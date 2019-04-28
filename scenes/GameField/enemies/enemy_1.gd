@@ -1,9 +1,5 @@
 extends Node2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 var enemy_data = preload("res://data/game_data.gd").new().enemies
 
 signal damage_done(damage)

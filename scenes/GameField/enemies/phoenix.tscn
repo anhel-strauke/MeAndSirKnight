@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://scenes/GameField/knight.gd" type="Script" id=1]
+[ext_resource path="res://scenes/GameField/enemies/phoenix.gd" type="Script" id=1]
 [ext_resource path="res://textures/weapon_anim/Pishpsh.png" type="Texture" id=2]
 [ext_resource path="res://textures/characters/Enemy_two.png" type="Texture" id=3]
 
@@ -29,6 +29,84 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 176, -106 ), Vector2( 142, -90 ), Vector2( 157, -107 ), Vector2( 176, -106 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Pishpsh:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, false ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_make_hit_damage"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "death"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("phoenix:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 14, 13, 12, 11 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("phoenix:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 176, -106 ), Vector2( 168, -89 ), Vector2( 155, -61 ), Vector2( 133, -27 ), Vector2( 105, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("phoenix:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.576471, 0.541176, 0.541176, 1 ), Color( 0.403922, 0.396078, 0.396078, 1 ), Color( 0.290196, 0.278431, 0.278431, 1 ), Color( 0.14902, 0.109804, 0.109804, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Pishpsh:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, false ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -70,6 +148,20 @@ tracks/2/keys = {
 "update": 0,
 "values": [ 0, 0, 6 ]
 }
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_make_firewall_effect"
+} ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "idle"
@@ -97,6 +189,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 176, -106 ), Vector2( 168, -95 ), Vector2( 159, -107 ), Vector2( 183, -121 ), Vector2( 170, -113 ), Vector2( 176, -106 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Pishpsh:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, false ]
 }
 
 [sub_resource type="Animation" id=1]
@@ -151,7 +255,7 @@ hframes = 7
 frame = 6
 
 [node name="phoenix" type="Sprite" parent="."]
-position = Vector2( 176, -106 )
+position = Vector2( 147.055, -95.7294 )
 texture = ExtResource( 3 )
 hframes = 23
 frame = 12
@@ -160,7 +264,9 @@ frame = 12
 autoplay = "test"
 playback_speed = 1.2
 anims/attack = SubResource( 3 )
+anims/death = SubResource( 5 )
 anims/fire = SubResource( 4 )
 anims/idle = SubResource( 2 )
 anims/test = SubResource( 1 )
 
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

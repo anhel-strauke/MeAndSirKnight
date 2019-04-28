@@ -37,6 +37,31 @@ export var enemies = {
 				"music": "enemy1.ogg",
 				"weapons_avail": ["sword", "axe"],
 				"actions_avail": ["give", "repair", "drop"]
+			},
+		"phoenix": {
+				"title": "Evil Fire Bird",
+				"hitpoints": 400,
+				"attacks": [
+					{
+						"type": "hit",
+						"min_damage": 7,
+						"max_damage": 12,
+						"cooldown_time": 3,
+						"probability": 4,
+						"effect": ""
+					},
+					{
+						"type": "firewall",
+						"min_damage": 0,
+						"max_damage": 0,
+						"cooldown_time": 4,
+						"probability": 1,
+						"effect": "fire"
+					}
+				],
+				"music": "enemy2.ogg",
+				"weapons_avail": ["sword", "axe", "bucket"],
+				"actions_avail": ["give", "repair"]
 			}
 	}
 	

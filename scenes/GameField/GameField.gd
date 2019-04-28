@@ -72,11 +72,12 @@ func transfer_damage_to_enemy(damage):
 
 func transfer_damage_to_knight(damage):
 	knight.take_damage(damage)
-	if rand_range(1.0, 6.0) > 5.0:
-		knight.run_effect("fire")
 
+func transfer_effect_to_knight(effect):
+	knight.run_effect(effect)
 
 func update_enemy_hits_bar(hp, maxhp):
+	print("Phoenix: ", hp, " of ", maxhp)
 	$GamePanel.set_enemy_hp(hp, maxhp)
 
 
