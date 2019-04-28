@@ -33,6 +33,7 @@ const MIN_DAMAGE = 2.0
 var is_weapon_going_down = true
 var is_hitting = false
 var time_since_action = 0.0
+var is_bend = false
 
 var effect_nodes = {}
 
@@ -71,7 +72,7 @@ func calc_damage():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if attacking:
+	if attacking and not is_bend:
 		if is_weapon_going_down:
 			if can_replace_weapon() and next_weapon != "":
 				replace_weapon(next_weapon)
@@ -113,6 +114,7 @@ func take_damage(damage):
 	if hitpoints > 0:
 		print("Knight took ", damage, " damage; hp is ", hitpoints)
 		hitpoints -= damage
+		$AnimationPlayer.play("damage")
 		emit_signal("hitpoints_changed", hitpoints, total_hitpoints)
 		if hitpoints <= 0:
 			hitpoints = 0
@@ -151,6 +153,11 @@ func _on_animation_finished(anim_name):
 		is_hitting = false
 	elif anim_name == "victory":
 		emit_signal("victory")
+	elif anim_name == "bend":
+		is_bend = false
+		do_weapon_reset()
+		is_hitting = false
+		
 
 func update_weapon_hits(weapon, amount):
 	weapon_hit_count[weapon] = round(len(weapon_data[weapon]["penalty"]) * (1.0 - amount))
@@ -191,5 +198,17 @@ func run_effect(effect_name):
 		current_effects.append(new_effect)
 	
 func stop_effect(effect_name):
-	pass
-	
+	var effects_to_stop = []
+	for eff in current_effects:
+		if eff["name"] == effect_name:
+			effects_to_stop.append(eff)
+	effect_nodes[effect_name].stop()
+	effect_nodes[effect_name].visible = false
+	for eff in effects_to_stop:
+		current_effects.remove(current_effects.find(eff))
+
+func do_bend():
+	is_bend = true
+	for wpn in weapon_nodes:
+		weapon_nodes[wpn].visible = false
+	$AnimationPlayer.play("bend")

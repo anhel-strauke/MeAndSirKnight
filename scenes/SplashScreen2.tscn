@@ -56,6 +56,7 @@ margin_right = 136.0
 margin_bottom = 37.0
 rect_pivot_offset = Vector2( 0, 19 )
 custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0.752941, 0.752941, 0.752941, 1 )
 text = "Сделано в
 Godot Engine"
 align = 1
@@ -67,6 +68,7 @@ margin_right = 300.142
 margin_bottom = 47.8696
 rect_pivot_offset = Vector2( 0, 19 )
 custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0.752941, 0.752941, 0.752941, 1 )
 text = "на Siberian
 Game Jam"
 align = 1

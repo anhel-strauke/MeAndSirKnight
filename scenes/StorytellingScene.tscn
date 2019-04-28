@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://textures/black8x8.png" type="Texture" id=1]
+[ext_resource path="res://fonts/pixelfont_dynamicfont.tres" type="DynamicFont" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "text"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.49808 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[node name="StorytellingScene" type="Node2D"]
+
+[node name="background" type="Sprite" parent="."]
+position = Vector2( 160, 90 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 320, 180 )
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 15.0
+margin_top = 135.0
+margin_right = 305.0
+margin_bottom = 167.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+text = "Здесь мы поговорим о скандалах, 
+интригах и расследованияхв игровой
+индустрии. Каких разработчиков "
+clip_text = true
+max_lines_visible = 3
+
+[node name="text_anim" type="AnimationPlayer" parent="."]
+anims/text = SubResource( 1 )
+

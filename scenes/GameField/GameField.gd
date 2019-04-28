@@ -29,6 +29,12 @@ func process_weapon_click(action, weapon):
 				$GamePanel.play_small_cooldown(action)
 		"repair":
 			squire.do_repair(weapon)
+		"drop":
+			if weapon != knight.weapon_type and weapon != knight.next_weapon:
+				knight.set_next_weapon(weapon)
+				knight.do_bend()
+				$GamePanel.set_current_weapon(weapon)
+				$GamePanel.play_small_cooldown(action)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
