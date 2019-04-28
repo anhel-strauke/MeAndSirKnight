@@ -1,8 +1,23 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://textures/backgrounds/background_lava.png" type="Texture" id=1]
 [ext_resource path="res://scenes/GameField/GameField.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/GameField/enemies/phoenix.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "start"
+tracks/0/type = "value"
+tracks/0/path = NodePath("phoenix:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 237, 147 ), Vector2( 87, 147 ) ]
+}
 
 [node name="level_2" type="Node2D"]
 
@@ -16,10 +31,15 @@ current_enemy = "phoenix"
 [node name="phoenix" parent="." instance=ExtResource( 3 )]
 position = Vector2( 87, 147 )
 z_index = 1
-attacking = true
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "start"
+anims/start = SubResource( 1 )
+
+[connection signal="begin_battle" from="GameField" to="phoenix" method="begin_battle"]
 [connection signal="damage_done" from="GameField" to="phoenix" method="take_damage"]
 [connection signal="damage_done" from="phoenix" to="GameField" method="transfer_damage_to_knight"]
 [connection signal="finally_dead" from="phoenix" to="GameField" method="enemy_defeated"]
 [connection signal="hp_changed" from="phoenix" to="GameField" method="update_enemy_hits_bar"]
 [connection signal="put_effect" from="phoenix" to="GameField" method="transfer_effect_to_knight"]
+[connection signal="animation_finished" from="AnimationPlayer" to="GameField" method="begin_level"]

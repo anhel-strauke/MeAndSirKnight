@@ -1,12 +1,14 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scenes/GameField/knight.gd" type="Script" id=1]
 [ext_resource path="res://textures/characters/knight_x.png" type="Texture" id=2]
 [ext_resource path="res://textures/characters/knight_attack.png" type="Texture" id=3]
 [ext_resource path="res://textures/weapon_anim/sword_attack.png" type="Texture" id=4]
 [ext_resource path="res://textures/weapon_anim/axe.png" type="Texture" id=5]
-[ext_resource path="res://textures/weapon_anim/fire.png" type="Texture" id=6]
-[ext_resource path="res://scenes/GameField/effects/fire.gd" type="Script" id=7]
+[ext_resource path="res://textures/characters/Vedroanim.png" type="Texture" id=6]
+[ext_resource path="res://textures/weapon_anim/fire.png" type="Texture" id=7]
+[ext_resource path="res://scenes/GameField/effects/fire.gd" type="Script" id=8]
+[ext_resource path="res://textures/characters/Water.png" type="Texture" id=9]
 
 [sub_resource type="Animation" id=8]
 resource_name = "bend"
@@ -98,6 +100,18 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("knight_attack/weapon/bucket/bucket:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 1 ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -230,6 +244,118 @@ tracks/4/keys = {
 "update": 1,
 "values": [ false, false ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("knight_attack/weapon/bucket/bucket:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("knight_attack/water/Water:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("knight_attack/water/Water:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "idle"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("knight_x:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("knight_attack:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("knight_attack:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("knight_attack/weapon/sword/sword_attack:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("knight_attack/weapon/axe/axe:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("knight_attack/weapon/bucket/bucket:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "victory"
@@ -310,6 +436,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [ false, false ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("knight_attack/weapon/bucket/bucket:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 0 ]
+}
 
 [sub_resource type="Animation" id=6]
 resource_name = "idle"
@@ -352,10 +490,12 @@ anims/bend = SubResource( 8 )
 anims/damage = SubResource( 9 )
 anims/death = SubResource( 10 )
 anims/hit = SubResource( 4 )
+anims/idle = SubResource( 11 )
 anims/victory = SubResource( 5 )
 anims/weapon_reset = SubResource( 3 )
 
 [node name="knight_x" type="Sprite" parent="."]
+visible = false
 position = Vector2( 17, -68 )
 texture = ExtResource( 2 )
 hframes = 3
@@ -367,6 +507,7 @@ texture = ExtResource( 3 )
 centered = false
 vframes = 2
 hframes = 5
+frame = 4
 
 [node name="weapon" type="Node2D" parent="knight_attack"]
 position = Vector2( 0, 101 )
@@ -380,14 +521,23 @@ position = Vector2( 0, -100 )
 texture = ExtResource( 4 )
 centered = false
 hframes = 5
-frame = 1
+frame = 4
 
 [node name="axe" type="Node2D" parent="knight_attack/weapon"]
+visible = false
 
 [node name="axe" type="Sprite" parent="knight_attack/weapon/axe"]
 position = Vector2( 43, -50 )
 texture = ExtResource( 5 )
 hframes = 5
+frame = 4
+
+[node name="bucket" type="Node2D" parent="knight_attack/weapon"]
+
+[node name="bucket" type="Sprite" parent="knight_attack/weapon/bucket"]
+position = Vector2( 51, -48 )
+texture = ExtResource( 6 )
+hframes = 3
 frame = 1
 
 [node name="effects" type="Node2D" parent="knight_attack"]
@@ -395,14 +545,23 @@ frame = 1
 [node name="fire" type="Sprite" parent="knight_attack/effects"]
 visible = false
 position = Vector2( 34, 60 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 hframes = 13
 frame = 12
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 
 [node name="anim" type="AnimationPlayer" parent="knight_attack/effects/fire"]
 anims/idle = SubResource( 6 )
 anims/start = SubResource( 7 )
+
+[node name="water" type="Node2D" parent="knight_attack"]
+
+[node name="Water" type="Sprite" parent="knight_attack/water"]
+visible = false
+position = Vector2( 48, 51 )
+texture = ExtResource( 9 )
+hframes = 3
+frame = 2
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
 [connection signal="animation_finished" from="knight_attack/effects/fire/anim" to="knight_attack/effects/fire" method="_on_fire_animation_finished"]

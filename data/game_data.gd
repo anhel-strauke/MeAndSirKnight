@@ -36,7 +36,8 @@ export var enemies = {
 				"cooldown_time": 2,
 				"music": "enemy1.ogg",
 				"weapons_avail": ["sword", "axe"],
-				"actions_avail": ["give", "repair", "drop"]
+				"actions_avail": ["give", "repair"],
+				"dialog": [ "Вперёд,\nсэр!", "!"]
 			},
 		"phoenix": {
 				"title": "Evil Fire Bird",
@@ -61,7 +62,34 @@ export var enemies = {
 				],
 				"music": "enemy2.ogg",
 				"weapons_avail": ["sword", "axe", "bucket"],
-				"actions_avail": ["give", "repair"]
+				"actions_avail": ["give", "repair"],
+				"dialog": ["Убъём их\nпоскорее", "!"]
+			},
+		"scorpion": {
+				"title": "Evil Scorpion",
+				"hitpoints": 500,
+				"attacks": [
+					{
+						"type": "hit",
+						"min_damage": 10,
+						"max_damage": 18,
+						"cooldown_time": 2.5,
+						"probability": 4,
+						"effect": ""
+					},
+					{
+						"type": "tail",
+						"min_damage": 25,
+						"max_damage": 35,
+						"cooldown_time": 5,
+						"probability": 1,
+						"effect": "tail"
+					}
+				],
+				"music": "enemy3.ogg",
+				"weapons_avail": ["sword", "axe", "bucket"],
+				"actions_avail": ["give", "repair", "drop"],
+				"dialog": ["Это ещё\nчто?", "!"]
 			}
 	}
 	

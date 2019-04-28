@@ -1,14 +1,11 @@
 extends Node2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 var enemy_data = preload("res://data/game_data.gd").new().enemies
 
-export var enemy_type = "phoenix"
+export var enemy_type = "scorpion"
 
 signal damage_done(damage)
+signal tail_damage_done(damage)
 signal hp_changed(hp, maxhp)
 signal dying()
 signal finally_dead()
@@ -30,15 +27,15 @@ func _ready():
 	for attack in my_data["attacks"]:
 		for i in range(0, attack["probability"]):
 			attack_slots.append(attack["type"])
-		attacks[attack["type"]] = {
-				"min_damage": attack["min_damage"],
-				"max_damage": attack["max_damage"],
-				"cooldown": attack["cooldown_time"],
-				"effect": attack["effect"]
+			attacks[attack["type"]] = {
+					"min_damage": attack["min_damage"],
+					"max_damage": attack["max_damage"],
+					"cooldown": attack["cooldown_time"],
+					"effect": attack["effect"]
 			}
 	prepare_for_battle()
 	do_idle()
-	
+
 func prepare_for_battle():
 	var my_data = enemy_data[enemy_type]
 	hitpoints = my_data["hitpoints"]
@@ -53,8 +50,6 @@ func _process(delta):
 			time_since_attack += delta
 			if time_since_attack >= current_cooldown:
 				do_some_attack()
-			
-		
 
 func do_idle():
 	$AnimationPlayer.play("idle")
@@ -73,31 +68,29 @@ func do_some_attack():
 func do_attack_animation(attack_type):
 	match attack_type:
 		"hit":
-			$AnimationPlayer.play("attack")
-		"firewall":
-			$AnimationPlayer.play("fire")
+			$AnimationPlayer.play("hit")
+		"tail":
+			$AnimationPlayer.play("tail")
 
 func _make_hit_damage():
 	var dmg = rand_range(attacks[current_attack]["min_damage"], attacks[current_attack]["max_damage"])
 	if dmg > 0:
 		emit_signal("damage_done", dmg)
-	
-func _make_firewall_effect():
+
+func _make_tail_damage():
 	var dmg = rand_range(attacks[current_attack]["min_damage"], attacks[current_attack]["max_damage"])
 	if dmg > 0:
-		emit_signal("damage_done", dmg)
-	if attacks[current_attack]["effect"] != "":
-		emit_signal("put_effect", attacks[current_attack]["effect"])
+		emit_signal("tail_damage_done", dmg)
 
 func _on_AnimationPlayer_animation_finished(anim_name):
-	if anim_name == "attack" or anim_name == "fire":
+	if anim_name == "hit" or anim_name == "tail":
 		time_since_attack = 0
 		do_idle()
 	elif anim_name == "death":
 		emit_signal("finally_dead")
-
+		
 func take_damage(damage):
-	print("Phoenix takes ", damage, " damage, hp = ", hitpoints)
+	print("Scorpion takes ", damage, " damage, hp = ", hitpoints)
 	if hitpoints > 0:
 		hitpoints -= damage
 		emit_signal("hp_changed", hitpoints, total_hitpoints)
@@ -105,7 +98,7 @@ func take_damage(damage):
 			hitpoints = 0
 			do_death()
 			attacking = false
-			
+
 func do_death():
 	$AnimationPlayer.play("death")
 	emit_signal("dying")
