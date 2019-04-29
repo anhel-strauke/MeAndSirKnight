@@ -4,7 +4,7 @@ export var weapons = {
 		"sword": {
 				"min_damage": 30,
 				"max_damage": 35,
-				"attack_time": 0.1,
+				"attack_time": 0.05,
 				"cooldown_time": 1.5,
 				"repair_time": 2,
 				"penalty": [0, 0, 2, 2, 4, 6, 8, 12, 15, 20, 26, 30]
@@ -12,7 +12,7 @@ export var weapons = {
 		"axe": {
 				"min_damage": 60,
 				"max_damage": 85,
-				"attack_time": 0.1,
+				"attack_time": 0.05,
 				"cooldown_time": 1.5,
 				"repair_time": 5,
 				"penalty": [0, 8, 16, 32, 48]
@@ -30,7 +30,7 @@ export var weapons = {
 export var enemies = {
 		"enemy_1": {
 				"title": "Evil Knight",
-				"hitpoints": 400,
+				"hitpoints": 500,
 				"min_damage": 5,
 				"max_damage": 10,
 				"cooldown_time": 2,
@@ -41,7 +41,7 @@ export var enemies = {
 			},
 		"phoenix": {
 				"title": "Evil Fire Bird",
-				"hitpoints": 400,
+				"hitpoints": 600,
 				"attacks": [
 					{
 						"type": "hit",
@@ -56,7 +56,7 @@ export var enemies = {
 						"min_damage": 0,
 						"max_damage": 0,
 						"cooldown_time": 4,
-						"probability": 1,
+						"probability": 2,
 						"effect": "fire"
 					}
 				],
@@ -67,7 +67,7 @@ export var enemies = {
 			},
 		"scorpion": {
 				"title": "Evil Scorpion",
-				"hitpoints": 500,
+				"hitpoints": 800,
 				"attacks": [
 					{
 						"type": "hit",
@@ -82,7 +82,7 @@ export var enemies = {
 						"min_damage": 25,
 						"max_damage": 35,
 						"cooldown_time": 5,
-						"probability": 1,
+						"probability": 3,
 						"effect": "tail"
 					}
 				],
@@ -93,7 +93,7 @@ export var enemies = {
 			},
 		"dragon": {
 				"title": "Elder Ninja Dragon",
-				"hitpoints": 800,
+				"hitpoints": 1500,
 				"attacks": [
 					{
 						"type": "tail",
@@ -107,8 +107,8 @@ export var enemies = {
 						"type": "fire",
 						"min_damage": 10,
 						"max_damage": 30,
-						"cooldown_time": 7,
-						"probability": 2,
+						"cooldown_time": 5,
+						"probability": 3,
 						"effect": "fire"
 					}
 				],
@@ -121,7 +121,7 @@ export var enemies = {
 	
 export var effects = {
 		"fire": {
-				"damage_per_second": 10,
-				"length": 1.5,
+				"damage_per_second": 6,
+				"length": 25,
 			}
 	}
