@@ -6,4 +6,3 @@ font_path = "res://fonts/PressStart2P-Regular.ttf"
 [resource]
 size = 8
 font_data = SubResource( 1 )
-

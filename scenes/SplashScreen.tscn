@@ -48,5 +48,4 @@ anims/show = SubResource( 1 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
-
 [connection signal="animation_finished" from="splash_animation" to="." method="_on_splash_animation_finished"]
