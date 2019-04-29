@@ -8,7 +8,7 @@ var data = preload("res://data/game_data.gd").new()
 var weapon_data = data.weapons
 var effects_data = data.effects
 
-export var hitpoints: float = 100
+export var hitpoints: float = 200
 export var total_hitpoints = 100
 export var weapon_type: String = ""
 export var attacking: bool = false

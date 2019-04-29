@@ -188,6 +188,5 @@ stream = ExtResource( 10 )
 [node name="main_animation" type="AnimationPlayer" parent="."]
 autoplay = "show"
 anims/show = SubResource( 3 )
-
 [connection signal="finished" from="intro_music" to="main_theme" method="play"]
 [connection signal="animation_finished" from="main_animation" to="." method="_on_main_animation_finished"]

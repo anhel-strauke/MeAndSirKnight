@@ -117,6 +117,8 @@ func start_battle(anim):
 		$AnimationPlayer.play("fadein")
 		get_node("../AnimationPlayer").play("start")
 		emit_signal("reset_battle")
+		$GamePanel.set_current_weapon("sword")
+		$GamePanel.set_current_action("give")
 	elif anim == "victory":
 		$music_player.stop()
 		if current_enemy == "enemy_1":
@@ -126,7 +128,8 @@ func start_battle(anim):
 		elif current_enemy == "scorpion":
 			singletone.bos = 3
 		else:
-			get_tree().change_scene("res://MainMenu.tscn")
+			get_tree().change_scene("res://scenes/final.tscn")
+			return
 		get_tree().change_scene("res://scenes/GameField/map.tscn")
 
 func _on_knight_game_over():

@@ -78,10 +78,9 @@ func _input(event):
 func execute_action(menu_item: int):
 	match menu_item:
 		0:
-			get_tree().change_scene("res://StorytellingScene.tscn")
+			get_tree().change_scene("res://scenes/StorytellingScene.tscn")
 		1:
-			# TODO: Authors
-			pass
+			get_tree().change_scene("res://scenes/about_team.tscn")
 		2:
 			get_tree().quit()
 
