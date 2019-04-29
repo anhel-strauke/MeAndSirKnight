@@ -17,6 +17,10 @@ func _ready():
 		$game_menu/authors,
 		$game_menu/exit
 	]
+	if OS.get_name() == "HTML5":
+		var exit_item = menu_items[len(menu_items) - 1]
+		exit_item.visible = false
+		menu_items.remove(len(menu_items) - 1)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

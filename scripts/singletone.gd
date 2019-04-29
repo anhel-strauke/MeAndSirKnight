@@ -9,6 +9,9 @@ func _loadScene(var sceneName):
 	get_tree().change_scene(sceneName)
 
 var bos = 1 ;
+
+var scene_to_reload = ""
+
 func _ready():
 	pass # Replace with function body.
 

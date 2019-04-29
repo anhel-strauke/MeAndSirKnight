@@ -9,7 +9,7 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "text"
-length = 1.5
+length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Label:percent_visible")
 tracks/0/interp = 1
@@ -17,15 +17,27 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.49808 ),
+"times": PoolRealArray( 0.5, 2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("story1:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=2]
 resource_name = "text"
-length = 1.5
+length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Label:percent_visible")
 tracks/0/interp = 1
@@ -33,15 +45,27 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.49808 ),
+"times": PoolRealArray( 0.5, 2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 1.0 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("story2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "text"
-length = 1.5
+length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Label:percent_visible")
 tracks/0/interp = 1
@@ -49,10 +73,34 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.49808 ),
+"times": PoolRealArray( 0, 0.5, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label2:percent_visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.00108866, 1.2, 1.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0, 1.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("story3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0.0, 1.0 ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [node name="StorytellingScene" type="Node2D"]
@@ -65,6 +113,7 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 320, 180 )
 
 [node name="story1" type="Sprite" parent="."]
+visible = false
 
 [node name="Label" type="Label" parent="story1"]
 anchor_left = 1.0
@@ -77,20 +126,21 @@ margin_right = 296.584
 margin_bottom = 167.268
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.752941, 0.752941, 0.752941, 1 )
-text = "Жизнь нельзя купить или продать...
-индустрии. Каких разработчиков "
+text = "Жизнь нельзя купить или продать..."
 clip_text = true
+percent_visible = 0.000725905
 max_lines_visible = 3
 
 [node name="text_anim" type="AnimationPlayer" parent="story1"]
+autoplay = "text"
 anims/text = SubResource( 1 )
 
 [node name="story1" type="Sprite" parent="story1"]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 68, 63 )
 texture = ExtResource( 4 )
 
 [node name="story2" type="Sprite" parent="."]
-visible = false
 
 [node name="Label" type="Label" parent="story2"]
 anchor_left = 1.0
@@ -103,36 +153,38 @@ margin_right = 304.198
 margin_bottom = 49.6671
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.752941, 0.752941, 0.752941, 1 )
-text = "Но ее можно потратить на то во что
+text = "Но ее можно потратить на то, во что
 действительно веришь."
 valign = 1
 clip_text = true
+percent_visible = 0.0
 max_lines_visible = 3
 
 [node name="text_anim" type="AnimationPlayer" parent="story2"]
 anims/text = SubResource( 2 )
 
 [node name="story2" type="Sprite" parent="story2"]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 252.64, 117.626 )
 texture = ExtResource( 5 )
 
 [node name="story3" type="Sprite" parent="."]
-visible = false
 
 [node name="Label" type="Label" parent="story3"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 14.0
-margin_top = 14.0
-margin_right = 83.0
-margin_bottom = 193.0
+margin_left = 9.0
+margin_top = 9.0
+margin_right = 78.0
+margin_bottom = 188.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.752941, 0.752941, 0.752941, 1 )
 text = "Я верю
 "
 clip_text = true
+percent_visible = 0.0
 max_lines_visible = 3
 
 [node name="Label2" type="Label" parent="story3"]
@@ -141,22 +193,24 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 243.0
-margin_top = -19.0
+margin_top = 138.0
 margin_right = 312.0
 margin_bottom = 160.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.752941, 0.752941, 0.752941, 1 )
-text = "В сэра
+text = "в сэра
 Седрика"
 align = 2
 valign = 2
 clip_text = true
+percent_visible = 0.0
 max_lines_visible = 3
 
 [node name="text_anim" type="AnimationPlayer" parent="story3"]
 anims/text = SubResource( 3 )
 
 [node name="story3" type="Sprite" parent="story3"]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 160, 90 )
 texture = ExtResource( 6 )
 

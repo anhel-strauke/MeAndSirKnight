@@ -73,14 +73,14 @@ func is_mouse_over():
 	return mouse_over_now
 
 func _set_mouse_over():
-	set_tip(true)
+	#set_tip(true)
 	mouse_over_now = true
 
 func _reset_mouse_over():
-	set_tip(false)
+	#set_tip(false)
 	mouse_over_now = false
 
 func _on_weaponElement_input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
+	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and not event.pressed:
 		if not dimmed and (not cooldown or cooldown.is_finished()):
 			emit_signal("clicked", item_name)

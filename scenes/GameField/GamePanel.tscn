@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scenes/GameField/game_panel.gd" type="Script" id=1]
 [ext_resource path="res://textures/Full_panel.png" type="Texture" id=2]
@@ -118,6 +118,9 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 32, 15 )
+
 [node name="GamePanel" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -129,7 +132,7 @@ texture = ExtResource( 2 )
 [node name="UInode" type="Node" parent="game_panel"]
 
 [node name="we_give" type="Area2D" parent="game_panel/UInode"]
-position = Vector2( 20.7413, 23.1381 )
+position = Vector2( 21, 23 )
 z_index = 5
 script = ExtResource( 3 )
 item_name = "give"
@@ -144,11 +147,12 @@ z_index = 5
 texture = ExtResource( 4 )
 
 [node name="weapon" type="Sprite" parent="game_panel/UInode/we_give"]
+position = Vector2( 0, -1 )
 z_index = 5
 texture = ExtResource( 5 )
 
 [node name="selection" parent="game_panel/UInode/we_give" instance=ExtResource( 6 )]
-visible = false
+position = Vector2( 0, -1 )
 z_index = 5
 
 [node name="tip" type="AnimationPlayer" parent="game_panel/UInode/we_give"]
@@ -174,11 +178,13 @@ z_index = 5
 texture = ExtResource( 4 )
 
 [node name="weapon" type="Sprite" parent="game_panel/UInode/we_sword"]
+position = Vector2( 0.1092, -1.3658 )
 scale = Vector2( 0.821817, 0.821817 )
 z_index = 5
 texture = ExtResource( 8 )
 
 [node name="selection" parent="game_panel/UInode/we_sword" instance=ExtResource( 6 )]
+position = Vector2( 0.1092, -1.3658 )
 z_index = 5
 
 [node name="tip" type="AnimationPlayer" parent="game_panel/UInode/we_sword"]
@@ -201,11 +207,12 @@ z_index = 5
 texture = ExtResource( 4 )
 
 [node name="weapon" type="Sprite" parent="game_panel/UInode/we_repair"]
+position = Vector2( -0.1966, -1.5152 )
 z_index = 5
 texture = ExtResource( 9 )
 
 [node name="selection" parent="game_panel/UInode/we_repair" instance=ExtResource( 6 )]
-visible = false
+position = Vector2( -0.1966, -1.5152 )
 z_index = 5
 
 [node name="tip" type="AnimationPlayer" parent="game_panel/UInode/we_repair"]
@@ -213,6 +220,7 @@ autoplay = "helpScale"
 anims/helpScale = SubResource( 4 )
 
 [node name="button_cooldown" parent="game_panel/UInode/we_repair" instance=ExtResource( 7 )]
+position = Vector2( -0.1966, -1.5152 )
 z_index = 5
 
 [node name="we_axe" type="Area2D" parent="game_panel/UInode"]
@@ -231,11 +239,12 @@ z_index = 5
 texture = ExtResource( 4 )
 
 [node name="weapon" type="Sprite" parent="game_panel/UInode/we_axe"]
+position = Vector2( -0.118401, -1.5152 )
 z_index = 5
 texture = ExtResource( 10 )
 
 [node name="selection" parent="game_panel/UInode/we_axe" instance=ExtResource( 6 )]
-visible = false
+position = Vector2( -0.118401, -1.5152 )
 z_index = 5
 
 [node name="tip" type="AnimationPlayer" parent="game_panel/UInode/we_axe"]
@@ -243,7 +252,7 @@ autoplay = "helpScale"
 anims/helpScale = SubResource( 5 )
 
 [node name="we_drop" type="Area2D" parent="game_panel/UInode"]
-position = Vector2( 20.7413, 91.6647 )
+position = Vector2( 21, 92 )
 z_index = 5
 script = ExtResource( 3 )
 item_name = "drop"
@@ -258,11 +267,12 @@ z_index = 5
 texture = ExtResource( 4 )
 
 [node name="weapon" type="Sprite" parent="game_panel/UInode/we_drop"]
+position = Vector2( 1, -2 )
 z_index = 5
 texture = ExtResource( 11 )
 
 [node name="selection" parent="game_panel/UInode/we_drop" instance=ExtResource( 6 )]
-visible = false
+position = Vector2( 0, -2 )
 z_index = 5
 
 [node name="tip" type="AnimationPlayer" parent="game_panel/UInode/we_drop"]
@@ -270,6 +280,7 @@ autoplay = "helpScale"
 anims/helpScale = SubResource( 6 )
 
 [node name="button_cooldown" parent="game_panel/UInode/we_drop" instance=ExtResource( 7 )]
+position = Vector2( 0, -2 )
 z_index = 5
 
 [node name="we_bucket" type="Area2D" parent="game_panel/UInode"]
@@ -288,11 +299,12 @@ z_index = 5
 texture = ExtResource( 4 )
 
 [node name="weapon" type="Sprite" parent="game_panel/UInode/we_bucket"]
+position = Vector2( 0.1092, -1.8924 )
 z_index = 5
 texture = ExtResource( 12 )
 
 [node name="selection" parent="game_panel/UInode/we_bucket" instance=ExtResource( 6 )]
-visible = false
+position = Vector2( 0.1092, -1.8924 )
 z_index = 5
 
 [node name="tip" type="AnimationPlayer" parent="game_panel/UInode/we_bucket"]
@@ -309,13 +321,35 @@ uppercase = true
 script = ExtResource( 14 )
 
 [node name="hero_hits_bar" parent="game_panel/UInode" instance=ExtResource( 15 )]
-position = Vector2( 111, 9 )
+position = Vector2( 116, 8 )
 scale = Vector2( -1, 1 )
 z_index = 5
 
 [node name="enemy_hits_bar" parent="game_panel/UInode" instance=ExtResource( 15 )]
-position = Vector2( 277, 9 )
+position = Vector2( 272, 8 )
 z_index = 5
+
+[node name="buttons" type="Node2D" parent="game_panel/UInode"]
+z_index = 5
+
+[node name="menu_button" type="Button" parent="game_panel/UInode/buttons"]
+pause_mode = 1
+margin_left = 7.0
+margin_top = 145.0
+margin_right = 69.0
+margin_bottom = 173.0
+focus_mode = 0
+custom_fonts/font = ExtResource( 13 )
+text = "Выход"
+flat = true
+clip_text = true
+
+[node name="pause_button" type="Area2D" parent="game_panel/UInode/buttons"]
+
+[node name="shape" type="CollisionShape2D" parent="game_panel/UInode/buttons/pause_button"]
+position = Vector2( 38, 125 )
+z_index = 5
+shape = SubResource( 8 )
 
 [connection signal="clicked" from="game_panel/UInode/we_give" to="." method="onButtonClicked"]
 [connection signal="input_event" from="game_panel/UInode/we_give" to="game_panel/UInode/we_give" method="_on_weaponElement_input_event"]
@@ -329,3 +363,5 @@ z_index = 5
 [connection signal="input_event" from="game_panel/UInode/we_drop" to="game_panel/UInode/we_drop" method="_on_weaponElement_input_event"]
 [connection signal="clicked" from="game_panel/UInode/we_bucket" to="." method="onButtonClicked"]
 [connection signal="input_event" from="game_panel/UInode/we_bucket" to="game_panel/UInode/we_bucket" method="_on_weaponElement_input_event"]
+[connection signal="pressed" from="game_panel/UInode/buttons/menu_button" to="." method="_on_menu_button_pressed"]
+[connection signal="input_event" from="game_panel/UInode/buttons/pause_button" to="." method="_on_pause_button_input_event"]

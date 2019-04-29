@@ -43,6 +43,8 @@ func set_progress(prog):
 		right_side.visible = false
 		left_side.visible = true
 	else:
+		middle.visible = false
+		right_side.visible = false
 		left_side.visible = false
 
 func get_progress():

@@ -145,7 +145,8 @@ func _on_hit():
 	emit_signal("damage_done", damage)
 
 func do_weapon_reset():
-	$AnimationPlayer.play("weapon_reset")
+	if attacking:
+		$AnimationPlayer.play("weapon_reset")
 	is_weapon_going_down = true
 	time_since_action = 0.0
 	
@@ -173,9 +174,9 @@ func _on_animation_finished(anim_name):
 	elif anim_name == "victory":
 		emit_signal("victory")
 	is_bend = false
-	do_weapon_reset()
 	is_hitting = false
-		
+	if anim_name in ["hit", "bend", "victory", "damage"]:
+		do_weapon_reset()
 
 func update_weapon_hits(weapon, amount):
 	weapon_hit_count[weapon] = round(len(weapon_data[weapon]["penalty"]) * (1.0 - amount))

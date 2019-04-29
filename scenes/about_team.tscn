@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/about_team.gd" type="Script" id=1]
 [ext_resource path="res://textures/black8x8.png" type="Texture" id=2]
 [ext_resource path="res://fonts/pixelfont_dynamicfont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://textures/characters/Dragon.png" type="Texture" id=4]
+[ext_resource path="res://sound/music/enemy3.ogg" type="AudioStream" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "show"
@@ -77,7 +78,7 @@ text = ": : : Мы с сэром Рыцарем : : :
 Музыка:
     Ди
 
-"
+Siberian Game Jam 2019"
 
 [node name="Dragon" type="Sprite" parent="."]
 position = Vector2( 42, 54 )
@@ -87,4 +88,8 @@ hframes = 13
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "show"
 anims/show = SubResource( 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+autoplay = true
 

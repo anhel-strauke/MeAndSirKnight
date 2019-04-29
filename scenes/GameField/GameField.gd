@@ -15,7 +15,6 @@ export var current_enemy = "enemy_1"
 
 signal damage_done(damage)
 signal begin_battle()
-signal reset_battle()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -100,10 +99,13 @@ func enemy_defeated():
 func show_victory():
 	knight.attacking = false
 	$AnimationPlayer.play("victory")
+	$music_player.stop()
+	$victory_sound.play()
 	
 func show_defeat():
 	$AnimationPlayer.play("defeat")
-	
+	$music_player.stop()
+	$defeat_sound.play()
 
 func begin_level(anim):
 	$AnimationPlayer.play("dialog")
@@ -113,12 +115,8 @@ func start_battle(anim):
 		knight.attacking = true
 		emit_signal("begin_battle")
 	elif anim == "defeat":
-		_ready()
-		$AnimationPlayer.play("fadein")
-		get_node("../AnimationPlayer").play("start")
-		emit_signal("reset_battle")
-		$GamePanel.set_current_weapon("sword")
-		$GamePanel.set_current_action("give")
+		singletone.scene_to_reload = self.get_parent().filename
+		get_tree().change_scene("res://scenes/scene_reloader.tscn")
 	elif anim == "victory":
 		$music_player.stop()
 		if current_enemy == "enemy_1":
@@ -134,3 +132,12 @@ func start_battle(anim):
 
 func _on_knight_game_over():
 	show_defeat()
+
+
+func _on_GamePanel_menu_clicked():
+	get_tree().change_scene("res://scenes/MainMenu.tscn")
+
+
+func _on_GamePanel_pause_clicked():
+	$pause_popup.show()
+	get_tree().paused = true
