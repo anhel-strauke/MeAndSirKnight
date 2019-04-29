@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/GameField/map.gd" type="Script" id=1]
 [ext_resource path="res://textures/map.png" type="Texture" id=2]
 [ext_resource path="res://textures/X.png" type="Texture" id=3]
 [ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://textures/black8x8.png" type="Texture" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "mapAnimation"
@@ -34,14 +35,13 @@ tracks/1/keys = {
 "values": [ 0.0, 0.999985, 0.999985 ]
 }
 
-[sub_resource type="Curve2D" id=4]
+[sub_resource type="Curve2D" id=2]
 bake_interval = 1.0
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -324, -81, 0, 0, 0, 0, -317, -90, -0.150278, 0.0751389, 0.150278, -0.0751389, -310, -97, -0.225417, -0.150278, 0.225417, 0.150278, -303, -104, 0, 0, 0, 0, -299, -108, -0.150278, 0.225417, 0.150278, -0.225417, -293, -113, 0, 0, 0, 0, -289, -117, 0, 0, 0, 0, -281, -124, 0, 0, 0, 0, -276, -128, 0, 0, 0, 0, -271, -132, 0, 0, 0, 0, -263, -139, 0, 0, 0, 0, -256, -146 )
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "mapAnimation"
+[sub_resource type="Animation" id=3]
 length = 3.0
 loop = true
 tracks/0/type = "value"
@@ -57,8 +57,7 @@ tracks/0/keys = {
 "values": [ 0, 11 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "mapAnimation"
+[sub_resource type="Animation" id=4]
 length = 3.0
 loop = true
 tracks/0/type = "value"
@@ -72,6 +71,36 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0, 11 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "show_and_hide"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("black8x8:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 3.5, 3.9, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "go_next_level"
+} ]
 }
 
 [node name="Node2D" type="Node2D"]
@@ -92,8 +121,9 @@ autoplay = "mapAnimation"
 anims/mapAnimation = SubResource( 1 )
 
 [node name="Path2D" type="Path2D" parent="X"]
+visible = false
 position = Vector2( 282.88, 122.191 )
-curve = SubResource( 4 )
+curve = SubResource( 2 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="X/Path2D"]
 position = Vector2( -256, -146 )
@@ -105,7 +135,6 @@ scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 4 )
 
 [node name="X2" type="Sprite" parent="."]
-editor/display_folded = true
 position = Vector2( 166.199, 111.954 )
 rotation = 1.18682
 texture = ExtResource( 3 )
@@ -114,10 +143,9 @@ frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="X2"]
 autoplay = "mapAnimation"
-anims/mapAnimation = SubResource( 2 )
+anims/mapAnimation = SubResource( 3 )
 
 [node name="X3" type="Sprite" parent="."]
-editor/display_folded = true
 position = Vector2( 241.5, 87.1066 )
 rotation = 0.0523599
 texture = ExtResource( 3 )
@@ -126,5 +154,15 @@ frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="X3"]
 autoplay = "mapAnimation"
-anims/mapAnimation = SubResource( 3 )
+anims/mapAnimation = SubResource( 4 )
+
+[node name="display" type="AnimationPlayer" parent="."]
+autoplay = "show_and_hide"
+anims/show_and_hide = SubResource( 5 )
+
+[node name="black8x8" type="Sprite" parent="."]
+position = Vector2( 160, 90 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 320, 180 )
 

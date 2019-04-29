@@ -151,14 +151,14 @@ func mark_ready():
 func set_hint(button_id):
 	match button_id:
 		"we_give":
-			status_label.text = "Give Weapon"
+			status_label.text = "Подать оружие"
 		"we_repair":
-			status_label.text = "Sharpen Weapon"
+			status_label.text = "Чинить оружие"
 		"we_drop":
-			status_label.text = "Drop Weapon"
+			status_label.text = "Бросить оружие"
 		"we_sword":
-			status_label.text = "Sword"
+			status_label.text = "Меч"
 		"we_axe":
-			status_label.text = "Axe"
+			status_label.text = "Секира"
 		"we_bucket":
-			status_label.text = "Bucket Of Water"
+			status_label.text = "Ведро с водой"
