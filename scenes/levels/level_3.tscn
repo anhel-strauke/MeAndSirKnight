@@ -31,7 +31,7 @@ position = Vector2( -36, -45 )
 current_enemy = "scorpion"
 
 [node name="scorpion" parent="." instance=ExtResource( 3 )]
-position = Vector2( 206, 108 )
+position = Vector2( 271, 108 )
 z_index = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

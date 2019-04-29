@@ -105,8 +105,8 @@ export var enemies = {
 					},
 					{
 						"type": "fire",
-						"min_damage": 10,
-						"max_damage": 30,
+						"min_damage": 5,
+						"max_damage": 10,
 						"cooldown_time": 5,
 						"probability": 3,
 						"effect": "fire"

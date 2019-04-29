@@ -40,7 +40,6 @@ anims/start = SubResource( 1 )
 
 [connection signal="begin_battle" from="GameField" to="ninja_dragon" method="begin_battle"]
 [connection signal="damage_done" from="GameField" to="ninja_dragon" method="take_damage"]
-[connection signal="reset_battle" from="GameField" to="ninja_dragon" method="_ready"]
 [connection signal="damage_done" from="ninja_dragon" to="GameField" method="transfer_damage_to_knight"]
 [connection signal="finally_dead" from="ninja_dragon" to="GameField" method="enemy_defeated"]
 [connection signal="hp_changed" from="ninja_dragon" to="GameField" method="update_enemy_hits_bar"]
