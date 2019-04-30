@@ -80,6 +80,15 @@ ui_down={
  ]
 }
 
+[locale]
+
+test="ru"
+translation_remaps={
+"res://textures/title.png": PoolStringArray( "res://textures/title_en.png:en" )
+}
+translations=PoolStringArray( "res://translation.en.translation", "res://translation.ru.translation" )
+locale_filter=[ 0, [ "en", "ru" ] ]
+
 [rendering]
 
 quality/driver/driver_name="GLES2"

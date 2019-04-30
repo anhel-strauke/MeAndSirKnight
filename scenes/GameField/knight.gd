@@ -5,7 +5,7 @@ var weapon_data = data.weapons
 var effects_data = data.effects
 
 export var hitpoints: float = 200
-export var total_hitpoints = 100
+export var total_hitpoints = 200
 export var weapon_type: String = ""
 export var attacking: bool = false
 
@@ -96,9 +96,15 @@ func _process(delta):
 	var finished_effects = []
 	for effect in current_effects:
 		var damage = effect["dps"] * delta
-		take_damage(damage)
+		effect["damage_accum"] += damage
+		if effect["damage_accum"] >= 1.0:
+			take_damage(effect["damage_accum"])
+			effect["damage_accum"] = 0.0
 		effect["time"] += delta
 		if effect["time"] >= effect["max_time"]:
+			if effect["damage_accum"] > 0.0:
+				take_damage(effect["damage_accum"])
+				effect["damage_accum"] = 0.0
 			effect_nodes[effect["name"]].stop()
 			effect_nodes[effect["name"]].visible = false
 			finished_effects.append(effect)
@@ -121,9 +127,10 @@ func do_attack():
 	
 func take_damage(damage):
 	if hitpoints > 0:
-		print("Knight took ", damage, " damage; hp is ", hitpoints)
+		print("Knight took ", damage, " damage; hp was ", hitpoints)
 		hitpoints -= damage
-		$AnimationPlayer.play("damage")
+		if not is_bend:
+			$AnimationPlayer.play("damage")
 		emit_signal("hitpoints_changed", hitpoints, total_hitpoints)
 		if hitpoints <= 0:
 			hitpoints = 0
@@ -171,6 +178,7 @@ func _on_animation_finished(anim_name):
 		is_hitting = false
 		water.visible = false
 	elif anim_name == "victory":
+		$AnimationPlayer.play("weapon_reset")
 		emit_signal("victory")
 	is_bend = false
 	is_hitting = false
@@ -219,6 +227,7 @@ func run_effect(effect_name):
 				"name": effect_name,
 				"dps": effects_data[effect_name]["damage_per_second"],
 				"time": 0.0,
+				"damage_accum": 0.0,
 				"max_time": effects_data[effect_name]["length"],
 			}
 		current_effects.append(new_effect)

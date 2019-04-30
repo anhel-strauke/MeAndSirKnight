@@ -2,10 +2,11 @@
 
 [ext_resource path="res://scenes/SplashScreen.gd" type="Script" id=1]
 [ext_resource path="res://textures/black8x8.png" type="Texture" id=2]
-[ext_resource path="res://splash_screen/godot_logo.png" type="Texture" id=3]
-[ext_resource path="res://splash_screen/ludum_dare_44_logo.png" type="Texture" id=4]
-[ext_resource path="res://splash_screen/sibgamejam_logo.png" type="Texture" id=5]
+[ext_resource path="res://textures/splash_screen/godot_logo.png" type="Texture" id=3]
+[ext_resource path="res://textures/splash_screen/ludum_dare_44_logo.png" type="Texture" id=4]
+[ext_resource path="res://textures/splash_screen/sibgamejam_logo.png" type="Texture" id=5]
 [ext_resource path="res://fonts/pixelfont_dynamicfont.tres" type="DynamicFont" id=6]
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "show"
@@ -57,9 +58,10 @@ margin_bottom = 37.0
 rect_pivot_offset = Vector2( 0, 19 )
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0.564706, 0.564706, 0.564706, 1 )
-text = "Сделано в
-Godot Engine"
+text = "MADE_WITH_GODOT"
 align = 1
+autowrap = true
+clip_text = true
 
 [node name="SpeciallyForLabel" type="Label" parent="."]
 margin_left = 164.142
@@ -69,9 +71,10 @@ margin_bottom = 47.8696
 rect_pivot_offset = Vector2( 0, 19 )
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0.564706, 0.564706, 0.564706, 1 )
-text = "на Siberian
-Game Jam"
+text = "AT_SIBERIAN_GAME_JAM"
 align = 1
+autowrap = true
+clip_text = true
 
 [node name="splash_animation" type="AnimationPlayer" parent="."]
 autoplay = "show"

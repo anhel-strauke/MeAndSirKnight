@@ -1,20 +1,19 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scenes/GameField/game_panel.gd" type="Script" id=1]
 [ext_resource path="res://textures/Full_panel.png" type="Texture" id=2]
 [ext_resource path="res://scenes/GameField/weaponElement.gd" type="Script" id=3]
-[ext_resource path="res://textures/uiWeapon/weaponBG.png" type="Texture" id=4]
-[ext_resource path="res://textures/give_icon.png" type="Texture" id=5]
-[ext_resource path="res://scenes/GameField/selection.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/GameField/button_cooldown.tscn" type="PackedScene" id=7]
-[ext_resource path="res://textures/sword_icon.png" type="Texture" id=8]
-[ext_resource path="res://textures/sharpening_icon.png" type="Texture" id=9]
-[ext_resource path="res://textures/axe_icon.png" type="Texture" id=10]
-[ext_resource path="res://textures/drop_icon.png" type="Texture" id=11]
-[ext_resource path="res://textures/bucket_icon.png" type="Texture" id=12]
-[ext_resource path="res://fonts/pixelfont_dynamicfont.tres" type="DynamicFont" id=13]
-[ext_resource path="res://scenes/GameField/weaponDialog.gd" type="Script" id=14]
-[ext_resource path="res://scenes/GameField/progress_bar.tscn" type="PackedScene" id=15]
+[ext_resource path="res://textures/give_icon.png" type="Texture" id=4]
+[ext_resource path="res://scenes/GameField/selection.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/GameField/button_cooldown.tscn" type="PackedScene" id=6]
+[ext_resource path="res://textures/sword_icon.png" type="Texture" id=7]
+[ext_resource path="res://textures/sharpening_icon.png" type="Texture" id=8]
+[ext_resource path="res://textures/axe_icon.png" type="Texture" id=9]
+[ext_resource path="res://textures/drop_icon.png" type="Texture" id=10]
+[ext_resource path="res://textures/bucket_icon.png" type="Texture" id=11]
+[ext_resource path="res://fonts/pixelfont_dynamicfont.tres" type="DynamicFont" id=12]
+[ext_resource path="res://scenes/GameField/weaponDialog.gd" type="Script" id=13]
+[ext_resource path="res://scenes/GameField/progress_bar.tscn" type="PackedScene" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16.1256, 16.4804 )
@@ -141,17 +140,12 @@ item_name = "give"
 z_index = 5
 shape = SubResource( 1 )
 
-[node name="weaponeBG" type="Sprite" parent="game_panel/UInode/we_give"]
-visible = false
-z_index = 5
-texture = ExtResource( 4 )
-
 [node name="weapon" type="Sprite" parent="game_panel/UInode/we_give"]
 position = Vector2( 0, -1 )
 z_index = 5
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 
-[node name="selection" parent="game_panel/UInode/we_give" instance=ExtResource( 6 )]
+[node name="selection" parent="game_panel/UInode/we_give" instance=ExtResource( 5 )]
 position = Vector2( 0, -1 )
 z_index = 5
 
@@ -159,7 +153,7 @@ z_index = 5
 autoplay = "helpScale"
 anims/helpScale = SubResource( 2 )
 
-[node name="button_cooldown" parent="game_panel/UInode/we_give" instance=ExtResource( 7 )]
+[node name="button_cooldown" parent="game_panel/UInode/we_give" instance=ExtResource( 6 )]
 z_index = 5
 
 [node name="we_sword" type="Area2D" parent="game_panel/UInode"]
@@ -172,18 +166,13 @@ item_name = "sword"
 z_index = 5
 shape = SubResource( 1 )
 
-[node name="weaponeBG" type="Sprite" parent="game_panel/UInode/we_sword"]
-visible = false
-z_index = 5
-texture = ExtResource( 4 )
-
 [node name="weapon" type="Sprite" parent="game_panel/UInode/we_sword"]
 position = Vector2( 0.1092, -1.3658 )
 scale = Vector2( 0.821817, 0.821817 )
 z_index = 5
-texture = ExtResource( 8 )
+texture = ExtResource( 7 )
 
-[node name="selection" parent="game_panel/UInode/we_sword" instance=ExtResource( 6 )]
+[node name="selection" parent="game_panel/UInode/we_sword" instance=ExtResource( 5 )]
 position = Vector2( 0.1092, -1.3658 )
 z_index = 5
 
@@ -201,17 +190,12 @@ item_name = "repair"
 z_index = 5
 shape = SubResource( 1 )
 
-[node name="weaponeBG" type="Sprite" parent="game_panel/UInode/we_repair"]
-visible = false
-z_index = 5
-texture = ExtResource( 4 )
-
 [node name="weapon" type="Sprite" parent="game_panel/UInode/we_repair"]
 position = Vector2( -0.1966, -1.5152 )
 z_index = 5
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 
-[node name="selection" parent="game_panel/UInode/we_repair" instance=ExtResource( 6 )]
+[node name="selection" parent="game_panel/UInode/we_repair" instance=ExtResource( 5 )]
 position = Vector2( -0.1966, -1.5152 )
 z_index = 5
 
@@ -219,7 +203,7 @@ z_index = 5
 autoplay = "helpScale"
 anims/helpScale = SubResource( 4 )
 
-[node name="button_cooldown" parent="game_panel/UInode/we_repair" instance=ExtResource( 7 )]
+[node name="button_cooldown" parent="game_panel/UInode/we_repair" instance=ExtResource( 6 )]
 position = Vector2( -0.1966, -1.5152 )
 z_index = 5
 
@@ -233,17 +217,12 @@ item_name = "axe"
 z_index = 5
 shape = SubResource( 1 )
 
-[node name="weaponeBG" type="Sprite" parent="game_panel/UInode/we_axe"]
-visible = false
-z_index = 5
-texture = ExtResource( 4 )
-
 [node name="weapon" type="Sprite" parent="game_panel/UInode/we_axe"]
 position = Vector2( -0.118401, -1.5152 )
 z_index = 5
-texture = ExtResource( 10 )
+texture = ExtResource( 9 )
 
-[node name="selection" parent="game_panel/UInode/we_axe" instance=ExtResource( 6 )]
+[node name="selection" parent="game_panel/UInode/we_axe" instance=ExtResource( 5 )]
 position = Vector2( -0.118401, -1.5152 )
 z_index = 5
 
@@ -261,17 +240,12 @@ item_name = "drop"
 z_index = 5
 shape = SubResource( 1 )
 
-[node name="weaponeBG" type="Sprite" parent="game_panel/UInode/we_drop"]
-visible = false
-z_index = 5
-texture = ExtResource( 4 )
-
 [node name="weapon" type="Sprite" parent="game_panel/UInode/we_drop"]
 position = Vector2( 1, -2 )
 z_index = 5
-texture = ExtResource( 11 )
+texture = ExtResource( 10 )
 
-[node name="selection" parent="game_panel/UInode/we_drop" instance=ExtResource( 6 )]
+[node name="selection" parent="game_panel/UInode/we_drop" instance=ExtResource( 5 )]
 position = Vector2( 0, -2 )
 z_index = 5
 
@@ -279,7 +253,7 @@ z_index = 5
 autoplay = "helpScale"
 anims/helpScale = SubResource( 6 )
 
-[node name="button_cooldown" parent="game_panel/UInode/we_drop" instance=ExtResource( 7 )]
+[node name="button_cooldown" parent="game_panel/UInode/we_drop" instance=ExtResource( 6 )]
 position = Vector2( 0, -2 )
 z_index = 5
 
@@ -293,17 +267,12 @@ item_name = "bucket"
 z_index = 5
 shape = SubResource( 1 )
 
-[node name="weaponeBG" type="Sprite" parent="game_panel/UInode/we_bucket"]
-visible = false
-z_index = 5
-texture = ExtResource( 4 )
-
 [node name="weapon" type="Sprite" parent="game_panel/UInode/we_bucket"]
 position = Vector2( 0.1092, -1.8924 )
 z_index = 5
-texture = ExtResource( 12 )
+texture = ExtResource( 11 )
 
-[node name="selection" parent="game_panel/UInode/we_bucket" instance=ExtResource( 6 )]
+[node name="selection" parent="game_panel/UInode/we_bucket" instance=ExtResource( 5 )]
 position = Vector2( 0.1092, -1.8924 )
 z_index = 5
 
@@ -312,20 +281,20 @@ autoplay = "helpScale"
 anims/helpScale = SubResource( 7 )
 
 [node name="status_label" type="Label" parent="game_panel/UInode"]
-margin_left = 103.49
-margin_top = 153.675
-margin_right = 295.49
-margin_bottom = 167.675
-custom_fonts/font = ExtResource( 13 )
+margin_left = 81.0
+margin_top = 154.0
+margin_right = 308.0
+margin_bottom = 168.0
+custom_fonts/font = ExtResource( 12 )
 uppercase = true
-script = ExtResource( 14 )
+script = ExtResource( 13 )
 
-[node name="hero_hits_bar" parent="game_panel/UInode" instance=ExtResource( 15 )]
+[node name="hero_hits_bar" parent="game_panel/UInode" instance=ExtResource( 14 )]
 position = Vector2( 116, 8 )
 scale = Vector2( -1, 1 )
 z_index = 5
 
-[node name="enemy_hits_bar" parent="game_panel/UInode" instance=ExtResource( 15 )]
+[node name="enemy_hits_bar" parent="game_panel/UInode" instance=ExtResource( 14 )]
 position = Vector2( 272, 8 )
 z_index = 5
 
@@ -339,8 +308,8 @@ margin_top = 145.0
 margin_right = 69.0
 margin_bottom = 173.0
 focus_mode = 0
-custom_fonts/font = ExtResource( 13 )
-text = "Выход"
+custom_fonts/font = ExtResource( 12 )
+text = "EXIT"
 flat = true
 clip_text = true
 

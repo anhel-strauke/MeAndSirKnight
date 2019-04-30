@@ -30,6 +30,7 @@ func _ready():
 	total_hitpoints = hitpoints
 	time_since_attack = 0.0
 	attacking = false
+	print("--- Battle with ", enemy_type, " -----------------------")
 	
 func calc_damage():
 	var dmg = rand_range(min_damage, max_damage)
@@ -44,6 +45,7 @@ func do_hit():
 	time_since_attack = 0.0
 
 func take_damage(damage):
+	print(enemy_type, " takes ", damage, " damage, hp was ", hitpoints)
 	if hitpoints > 0:
 		hitpoints -= damage
 		if hitpoints <= 0:
@@ -57,7 +59,6 @@ func become_dead():
 	$AnimationPlayer.play("death")
 	
 func _on_dead_animation_end():
-	visible = false
 	emit_signal("finally_dead")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

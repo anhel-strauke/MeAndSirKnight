@@ -1,31 +1,24 @@
 extends Node2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 var cursor: Node2D = null
+var menu_items = []
 var current_item = 0
 var cursor_enabled = false
-var menu_items = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	cursor = $game_menu/main_menu_cursor
+	cursor = $main_menu_cursor
 	menu_items = [
-		$game_menu/new_game,
-		$game_menu/authors,
-		$game_menu/language,
-		$game_menu/exit
+		$menu/lang_ru,
+		$menu/lang_en
 	]
-	if OS.get_name() == "HTML5":
-		var exit_item = menu_items[len(menu_items) - 1]
-		exit_item.visible = false
-		menu_items.remove(len(menu_items) - 1)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func run():
+	if TranslationServer.get_locale() == "ru":
+		set_cursor_to_item(0)
+	else:
+		set_cursor_to_item(1)
+	cursor_enabled = true
 
 func set_cursor_to_item(item: int):
 	if item >= 0 and item < len(menu_items):
@@ -36,15 +29,6 @@ func set_cursor_to_item(item: int):
 	else:
 		current_item = -1
 		cursor.visible = false
-
-func _on_main_animation_finished(anim_name):
-	pass
-		
-		
-func _activate_menu():
-	cursor_enabled = true
-	cursor.set_visible(true)
-	set_cursor_to_item(0)
 
 func _input(event):
 	#if not event is InputEventMouse:
@@ -86,14 +70,16 @@ func _input(event):
 #		# TODO: Play sound
 #		execute_action(current_item)
 
-func execute_action(menu_item: int):
-	match menu_item:
-		0:
-			get_tree().change_scene("res://scenes/StorytellingScene.tscn")
-		1:
-			get_tree().change_scene("res://scenes/about_team.tscn")
-		2:
-			get_tree().change_scene("res://scenes/language_screen.tscn")
-		3:
-			get_tree().quit()
+func execute_action(index: int):
+	var locale = "en"
+	if index == 0:
+		locale = "ru"
+	TranslationServer.set_locale(locale)
+	$AnimationPlayer.play("hide")
+	
+func finish():
+	get_tree().change_scene("res://scenes/MainMenu.tscn")
 
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
