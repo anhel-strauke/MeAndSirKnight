@@ -14,15 +14,15 @@ FINAL_LINE_3,Take care of yourself.,Берегите себя.
 FINAL_LINE_4,The End,Конец
 H_GIVE_,Give…,Подать...
 H_REPAIR_,Sharpen…,Чинить...
-H_DROP_,Drop…,Бросить...
+H_DROP_,Drop…,Уронить…
 H_GIVE_SWORD,Give Sword,Подать меч
 H_REPAIR_SWORD,Sharpen Sword,Чинить меч
-H_DROP_SWORD,Drop Sword,Бросить меч
+H_DROP_SWORD,Drop Sword,Уронить меч
 H_GIVE_AXE,Give Axe,Подать секиру
 H_REPAIR_AXE,Sharpen Axe,Чинить секиру
-H_DROP_AXE,Drop Axe,Бросить секиру
+H_DROP_AXE,Drop Axe,Уронить секиру
 H_GIVE_BUCKET,Give Bucket Of Water,Дать ведро с водой
-H_DROP_BUCKET,Drop Bucket Of Water,Поставить ведро с водой
+H_DROP_BUCKET,Drop Bucket Of Water,Уронить ведро с водой
 H_REPAIR_BUCKET,Sharpen a bucket? Huh?,Ведро не нужно чинить
 H_PAUSE,Pause,Пауза
 VICTORY,GLORIOUS\nVICTORY,ВРАГ\nПОВЕРЖЕН
