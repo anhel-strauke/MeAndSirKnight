@@ -4,11 +4,12 @@
 [ext_resource path="res://textures/black8x8.png" type="Texture" id=2]
 [ext_resource path="res://fonts/pixelfont_dynamicfont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://textures/characters/Dragon.png" type="Texture" id=4]
-[ext_resource path="res://sound/music/enemy3.ogg" type="AudioStream" id=5]
+[ext_resource path="res://sound/music/about_team.ogg" type="AudioStream" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "show"
-length = 9.0
+length = 17.5
+step = 0.04
 tracks/0/type = "value"
 tracks/0/path = NodePath("Label:percent_visible")
 tracks/0/interp = 1
@@ -16,7 +17,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 5 ),
+"times": PoolRealArray( 0, 8.04 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 1.0 ]
@@ -28,7 +29,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 5, 5.2, 5.4, 5.6, 5.8, 6 ),
+"times": PoolRealArray( 0, 8.16, 8.36, 8.56, 8.76, 8.96, 9.16 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 138, 49 ), Vector2( 138, 49 ), Vector2( 119, 46 ), Vector2( 100, 53 ), Vector2( 77, 47 ), Vector2( 54, 60 ), Vector2( 42, 54 ) ]
@@ -40,12 +41,27 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 9 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 8.56, 17.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "enable_click"
+}, {
 "args": [  ],
 "method": "ret"
 } ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Dragon:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 9.16, 9.24, 9.32, 9.4, 9.48, 9.56, 9.64, 9.72, 9.8, 9.88, 9.96, 10.04, 10.12, 10.2, 10.76, 10.84, 10.92, 11, 11.08, 11.16, 13.08, 13.16, 13.24, 13.32, 13.4, 13.48, 15.92, 16, 16.08, 16.16, 16.24, 16.32 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 0, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5 ]
 }
 
 [node name="about_team" type="Node2D"]
@@ -58,32 +74,22 @@ texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 320, 180 )
 
-[node name="Label" type="Label" parent="."]
-margin_left = -114.0
-margin_top = -77.0
-margin_right = 126.0
-margin_bottom = 63.0
-custom_fonts/font = ExtResource( 3 )
-text = ": : : Мы с сэром Рыцарем : : :
-
-    And Tak Soidet Games
-
-Гейм-дизайн:
-    Дина
-Код:
-    Анхель, Артур
-Графика:
-    Ника, Эвелина,
-    Мэвен
-Музыка:
-    Ди
-
-Siberian Game Jam 2019"
+[node name="Label" type="RichTextLabel" parent="."]
+margin_left = -132.0
+margin_top = -84.0
+margin_right = 120.0
+margin_bottom = 83.0
+custom_fonts/normal_font = ExtResource( 3 )
+bbcode_enabled = true
+visible_characters = 0
+percent_visible = 0.135593
+scroll_active = false
 
 [node name="Dragon" type="Sprite" parent="."]
-position = Vector2( 42, 54 )
+position = Vector2( 138, 49 )
 texture = ExtResource( 4 )
 hframes = 13
+frame = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "show"

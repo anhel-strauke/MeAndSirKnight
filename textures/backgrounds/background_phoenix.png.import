@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/hp_bar1.png-b67198d533e58c35b0bdd4d4f9036c99.stex"
+path="res://.import/background_phoenix.png-5654c143956e2237e744a47fefb99461.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/hp_bar1.png_files/hp_bar1.png"
-dest_files=[ "res://.import/hp_bar1.png-b67198d533e58c35b0bdd4d4f9036c99.stex" ]
+source_file="res://textures/backgrounds/background_phoenix.png"
+dest_files=[ "res://.import/background_phoenix.png-5654c143956e2237e744a47fefb99461.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

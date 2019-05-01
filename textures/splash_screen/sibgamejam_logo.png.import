@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Intro1.png-ee650c9fc6867aa67200028d2de6c02e.stex"
+path="res://.import/sibgamejam_logo.png-be8470e03c2381aa0878d48301377972.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://backgrounds/Intro1.png"
-dest_files=[ "res://.import/Intro1.png-ee650c9fc6867aa67200028d2de6c02e.stex" ]
+source_file="res://textures/splash_screen/sibgamejam_logo.png"
+dest_files=[ "res://.import/sibgamejam_logo.png-be8470e03c2381aa0878d48301377972.stex" ]
 
 [params]
 
@@ -18,9 +18,9 @@ compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
-compress/normal_map=0
+compress/normal_map=2
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

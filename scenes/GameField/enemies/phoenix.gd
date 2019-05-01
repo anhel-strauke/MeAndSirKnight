@@ -19,6 +19,7 @@ export var hitpoints: float = 0.0
 var total_hitpoints = 0.0
 var attacks = {}
 var attack_slots = []
+var attack_queue = []
 var time_since_attack = 0.0
 var current_cooldown = 0.0
 var current_attack = ""
@@ -38,14 +39,16 @@ func _ready():
 			}
 	prepare_for_battle()
 	do_idle()
+	print("--- Battle with ", enemy_type, " -----------------------")
 	
 func prepare_for_battle():
 	var my_data = enemy_data[enemy_type]
 	hitpoints = my_data["hitpoints"]
 	total_hitpoints = hitpoints
 	time_since_attack = 0.0
-	current_cooldown = 2.0
+	current_cooldown = 0.5
 	attacking = false
+	attack_queue = []
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -61,12 +64,26 @@ func do_idle():
 	$AnimationPlayer.play("idle")
 	is_idle = true
 	
+func build_attack_queue():
+	attack_queue = []
+	var attacks_list = []
+	for attack in attack_slots:
+		attacks_list.append(attack)
+	var q = ""
+	while len(attacks_list) > 0:
+		var attack_index = randi() % len(attacks_list)
+		attack_queue.append(attacks_list[attack_index])
+		q += attacks_list[attack_index] + " "
+		attacks_list.remove(attack_index)
+	print("*** ", enemy_type, " queue: ", q)
+	
 func do_some_attack():
-	var i = rand_range(0, len(attack_slots))
-	if i == len(attack_slots):
-		i = 0
-	var attack_type = attack_slots[i]
+	if len(attack_queue) == 0:
+		build_attack_queue()
+	var attack_type = attack_queue[0]
+	attack_queue.remove(0)
 	do_attack_animation(attack_type)
+	print("* ", enemy_type, " do ", attack_type)
 	current_attack = attack_type
 	current_cooldown = attacks[current_attack]["cooldown"]
 	is_idle = false
@@ -98,8 +115,9 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		emit_signal("finally_dead")
 
 func take_damage(damage):
-	print("Phoenix takes ", damage, " damage, hp = ", hitpoints)
+	print(enemy_type, " takes ", damage, " damage, hp was ", hitpoints)
 	if hitpoints > 0:
+		$damage_emitter.add_point(damage)
 		hitpoints -= damage
 		emit_signal("hp_changed", hitpoints, total_hitpoints)
 		if hitpoints <= 0:

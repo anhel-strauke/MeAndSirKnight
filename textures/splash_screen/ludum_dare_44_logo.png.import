@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/background_phoenix.png-a6d3e4033e188451dc85527545e9820a.stex"
+path="res://.import/ludum_dare_44_logo.png-c646760cd6081151267e1a6ae4749300.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://backgrounds/background_phoenix.png"
-dest_files=[ "res://.import/background_phoenix.png-a6d3e4033e188451dc85527545e9820a.stex" ]
+source_file="res://textures/splash_screen/ludum_dare_44_logo.png"
+dest_files=[ "res://.import/ludum_dare_44_logo.png-c646760cd6081151267e1a6ae4749300.stex" ]
 
 [params]
 
@@ -18,9 +18,9 @@ compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
-compress/normal_map=0
+compress/normal_map=2
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

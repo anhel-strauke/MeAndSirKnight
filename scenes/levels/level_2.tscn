@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://textures/backgrounds/background_lava.png" type="Texture" id=1]
+[ext_resource path="res://textures/backgrounds/background_phoenix.png" type="Texture" id=1]
 [ext_resource path="res://scenes/GameField/GameField.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/GameField/enemies/phoenix.tscn" type="PackedScene" id=3]
 
@@ -21,7 +21,7 @@ tracks/0/keys = {
 
 [node name="level_2" type="Node2D"]
 
-[node name="background_lava" type="Sprite" parent="."]
+[node name="background_phoenix" type="Sprite" parent="."]
 position = Vector2( 160, 90 )
 texture = ExtResource( 1 )
 
@@ -38,7 +38,6 @@ anims/start = SubResource( 1 )
 
 [connection signal="begin_battle" from="GameField" to="phoenix" method="begin_battle"]
 [connection signal="damage_done" from="GameField" to="phoenix" method="take_damage"]
-[connection signal="reset_battle" from="GameField" to="phoenix" method="_ready"]
 [connection signal="damage_done" from="phoenix" to="GameField" method="transfer_damage_to_knight"]
 [connection signal="finally_dead" from="phoenix" to="GameField" method="enemy_defeated"]
 [connection signal="hp_changed" from="phoenix" to="GameField" method="update_enemy_hits_bar"]

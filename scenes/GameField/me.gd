@@ -63,6 +63,8 @@ func weapon_taken():
 	do_idle()
 
 func do_give(weapon):
+	if state == State.Repair:
+		emit_signal("repair_done", current_weapon)
 	state = State.Give
 	_show_weapon(weapon)
 	current_weapon = weapon
@@ -70,6 +72,8 @@ func do_give(weapon):
 	$AnimationPlayer.play("idle_give")
 	
 func do_repair(weapon):
+	if state == State.Repair:
+		emit_signal("repair_done", current_weapon)
 	state = State.Repair
 	current_weapon = weapon
 	emit_signal("repair_start", weapon_repair_total_time[current_weapon])
