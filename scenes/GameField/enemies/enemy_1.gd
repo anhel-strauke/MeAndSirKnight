@@ -47,6 +47,7 @@ func do_hit():
 func take_damage(damage):
 	print(enemy_type, " takes ", damage, " damage, hp was ", hitpoints)
 	if hitpoints > 0:
+		$damage_emitter.add_point(damage)
 		hitpoints -= damage
 		if hitpoints <= 0:
 			become_dead()

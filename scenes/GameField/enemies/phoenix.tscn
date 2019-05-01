@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/GameField/enemies/phoenix.gd" type="Script" id=1]
 [ext_resource path="res://textures/weapon_anim/Pishpsh.png" type="Texture" id=2]
 [ext_resource path="res://textures/characters/Enemy_two.png" type="Texture" id=3]
+[ext_resource path="res://scenes/GameField/effects/damage_emitter.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "attack"
@@ -254,12 +255,12 @@ hframes = 7
 frame = 6
 
 [node name="phoenix" type="Sprite" parent="."]
-position = Vector2( 166.25, -111.229 )
+position = Vector2( 171.366, -113.84 )
 z_index = 1
 texture = ExtResource( 3 )
 vframes = 4
 hframes = 6
-frame = 2
+frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "test"
@@ -269,5 +270,11 @@ anims/death = SubResource( 2 )
 anims/fire = SubResource( 3 )
 anims/idle = SubResource( 4 )
 anims/test = SubResource( 5 )
+
+[node name="damage_emitter" parent="." instance=ExtResource( 4 )]
+position = Vector2( 178, -86 )
+color = Color( 1, 0.921569, 0.501961, 1 )
+width_range = 20.0
+lifetime = 0.7
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

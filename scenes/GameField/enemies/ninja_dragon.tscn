@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/GameField/enemies/ninja_dragon.gd" type="Script" id=1]
 [ext_resource path="res://textures/characters/Dragon.png" type="Texture" id=2]
 [ext_resource path="res://textures/characters/Dragon2.png" type="Texture" id=3]
+[ext_resource path="res://scenes/GameField/effects/damage_emitter.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "death"
@@ -268,5 +269,11 @@ anims/death = SubResource( 1 )
 anims/fire = SubResource( 2 )
 anims/idle = SubResource( 3 )
 anims/tail = SubResource( 4 )
+
+[node name="damage_emitter" parent="." instance=ExtResource( 4 )]
+position = Vector2( 197, -106 )
+color = Color( 1, 0.921569, 0.501961, 1 )
+width_range = 20.0
+lifetime = 0.7
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

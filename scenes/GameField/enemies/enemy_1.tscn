@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/GameField/enemies/enemy_1.gd" type="Script" id=1]
 [ext_resource path="res://textures/characters/Enemy_one.png" type="Texture" id=2]
+[ext_resource path="res://scenes/GameField/effects/damage_emitter.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "death"
@@ -98,4 +99,11 @@ texture = ExtResource( 2 )
 centered = false
 hframes = 4
 frame = 3
+
+[node name="damage_emitter" parent="." instance=ExtResource( 3 )]
+position = Vector2( 99, -67 )
+color = Color( 1, 0.921569, 0.501961, 1 )
+height = 70.0
+width_range = 10.0
+lifetime = 0.7
 

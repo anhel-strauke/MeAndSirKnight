@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scenes/GameField/knight.gd" type="Script" id=1]
 [ext_resource path="res://textures/characters/knight_x.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://textures/weapon_anim/fire.png" type="Texture" id=7]
 [ext_resource path="res://scenes/GameField/effects/fire.gd" type="Script" id=8]
 [ext_resource path="res://textures/characters/Water.png" type="Texture" id=9]
+[ext_resource path="res://scenes/GameField/effects/damage_emitter.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "bend"
@@ -563,7 +564,6 @@ texture = ExtResource( 3 )
 centered = false
 vframes = 2
 hframes = 5
-frame = 5
 
 [node name="weapon" type="Node2D" parent="knight_attack"]
 position = Vector2( 0, 101 )
@@ -617,6 +617,13 @@ position = Vector2( 48, 51 )
 texture = ExtResource( 9 )
 hframes = 3
 frame = 2
+
+[node name="damage_emitter" parent="." instance=ExtResource( 10 )]
+position = Vector2( 38, -43 )
+z_index = 2
+height = 80.0
+width_range = 10.0
+lifetime = 0.7
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
 [connection signal="animation_finished" from="knight_attack/effects/fire/anim" to="knight_attack/effects/fire" method="_on_fire_animation_finished"]

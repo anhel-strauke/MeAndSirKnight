@@ -59,13 +59,14 @@ func play_small_cooldown(action):
 		if act_button.item_name == action:
 			act_button.play_small_cooldown()
 			return
-var activeState = true
+
 # Internals
 func set_enabled():
 	enabled = true
 	
 func set_disabled():
 	enabled = false
+	set_hint("")
 	
 func onButtonClicked(var btnName):
 	if not enabled:
@@ -79,16 +80,13 @@ func onButtonClicked(var btnName):
 			return
 	for wpn_button in weapon_buttons:
 		if wpn_button.item_name == btnName:
+			end_cooldown("repair") # Repairing process interrupts on any action
 			emit_signal("weapon_clicked", current_action, btnName)
 			set_current_action("give")
 
 func set_current_action(action):
 	for act_button in action_buttons:
 		act_button.set_selected(act_button.item_name == action)
-#	if current_action == "repair":
-#		for act_button in action_buttons:
-#			if act_button.item_name == "repair":
-#				act_button.end_cooldown()
 	current_action = action
 	if current_action == "repair":
 		update_repairable_weapons()
@@ -166,8 +164,8 @@ func mark_ready():
 	can_do_actions = true
 
 func set_hint(button_id):
+	status_label.text = ""
 	if not enabled:
-		status_label.text = ""
 		return
 	match button_id:
 		"we_give":

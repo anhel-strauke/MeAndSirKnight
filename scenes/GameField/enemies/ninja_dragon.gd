@@ -117,6 +117,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 func take_damage(damage):
 	print(enemy_type, " takes ", damage, " damage, hp was ", hitpoints)
 	if hitpoints > 0:
+		$damage_emitter.add_point(damage)
 		hitpoints -= damage
 		emit_signal("hp_changed", hitpoints, total_hitpoints)
 		if hitpoints <= 0:

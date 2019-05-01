@@ -125,9 +125,10 @@ func do_attack():
 	emit_signal("weapon_damaged", weapon_type)
 	# TODO: Update weapon state
 	
-func take_damage(damage):
+func take_damage(damage: float):
 	if hitpoints > 0:
 		print("Knight took ", damage, " damage; hp was ", hitpoints)
+		$damage_emitter.add_point(round(damage))
 		hitpoints -= damage
 		if not is_bend:
 			$AnimationPlayer.play("damage")
