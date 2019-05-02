@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scenes/GameField/game_panel.gd" type="Script" id=1]
 [ext_resource path="res://textures/Full_panel.png" type="Texture" id=2]
@@ -12,8 +12,7 @@
 [ext_resource path="res://textures/drop_icon.png" type="Texture" id=10]
 [ext_resource path="res://textures/bucket_icon.png" type="Texture" id=11]
 [ext_resource path="res://fonts/pixelfont_dynamicfont.tres" type="DynamicFont" id=12]
-[ext_resource path="res://scenes/GameField/weaponDialog.gd" type="Script" id=13]
-[ext_resource path="res://scenes/GameField/progress_bar.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/GameField/progress_bar.tscn" type="PackedScene" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16.1256, 16.4804 )
@@ -281,20 +280,19 @@ autoplay = "helpScale"
 anims/helpScale = SubResource( 7 )
 
 [node name="status_label" type="Label" parent="game_panel/UInode"]
-margin_left = 81.0
+margin_left = 79.0
 margin_top = 154.0
 margin_right = 308.0
 margin_bottom = 168.0
 custom_fonts/font = ExtResource( 12 )
 uppercase = true
-script = ExtResource( 13 )
 
-[node name="hero_hits_bar" parent="game_panel/UInode" instance=ExtResource( 14 )]
+[node name="hero_hits_bar" parent="game_panel/UInode" instance=ExtResource( 13 )]
 position = Vector2( 116, 8 )
 scale = Vector2( -1, 1 )
 z_index = 5
 
-[node name="enemy_hits_bar" parent="game_panel/UInode" instance=ExtResource( 14 )]
+[node name="enemy_hits_bar" parent="game_panel/UInode" instance=ExtResource( 13 )]
 position = Vector2( 272, 8 )
 z_index = 5
 

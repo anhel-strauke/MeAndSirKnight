@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Fenixx.ogg-9f8ed26182318be24c8ffa104c653bf4.oggstr"
+
+[deps]
+
+source_file="res://Art/Sound/fx/Fenixx.ogg"
+dest_files=[ "res://.import/Fenixx.ogg-9f8ed26182318be24c8ffa104c653bf4.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

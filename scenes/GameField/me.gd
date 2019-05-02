@@ -1,9 +1,5 @@
 extends Node2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 signal weapon_updated(weapon, amount)
 signal repair_done(weapon)
 signal repair_start(max_cooldown_progress)
@@ -46,6 +42,7 @@ func _process(delta):
 		emit_signal("weapon_updated", current_weapon, amount)
 		emit_signal("repair_going", weapon_repair_time[current_weapon])
 		if weapon_repair_time[current_weapon] >= weapon_repair_total_time[current_weapon]:
+			weapon_repair_time[current_weapon] = 0.0
 			emit_signal("repair_done", current_weapon)
 			do_idle()
 

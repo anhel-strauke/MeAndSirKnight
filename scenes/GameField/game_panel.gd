@@ -37,6 +37,7 @@ func set_enemy_hp(hp, max_hp):
 	enemy_hp_bar.set_progress(hp/ max_hp)
 	
 func begin_cooldown(action, max_progress):
+	print("+ Begin cooldown at ", action)
 	for act_button in action_buttons:
 		if act_button.item_name == action:
 			act_button.play_cooldown(max_progress)
@@ -49,6 +50,7 @@ func update_cooldown(action, progress):
 			return
 	
 func end_cooldown(action):
+	print("+ End cooldown at ", action)
 	for act_button in action_buttons:
 		if act_button.item_name == action:
 			act_button.end_cooldown()

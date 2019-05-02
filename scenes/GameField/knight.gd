@@ -180,7 +180,6 @@ func _on_animation_finished(anim_name):
 		is_hitting = false
 		water.visible = false
 	elif anim_name == "victory":
-		$AnimationPlayer.play("weapon_reset")
 		emit_signal("victory")
 	is_bend = false
 	is_hitting = false

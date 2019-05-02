@@ -17,12 +17,12 @@ _global_script_class_icons={
 
 config/name="Me And Sir Knight"
 run/main_scene="res://scenes/SplashScreen.tscn"
+boot_splash/fullsize=false
 config/icon="res://icon.png"
 
 [autoload]
 
 singletone="*res://scripts/singletone.gd"
-mouse_cursor="*res://scenes/mouse_cursor.tscn"
 
 [display]
 

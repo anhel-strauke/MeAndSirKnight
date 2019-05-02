@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ScreamEnemy.ogg-9b6b1b49b37e2b4b5069090cd7bd8b1b.oggstr"
+
+[deps]
+
+source_file="res://Art/Sound/GJ/ScreamEnemy.ogg"
+dest_files=[ "res://.import/ScreamEnemy.ogg-9b6b1b49b37e2b4b5069090cd7bd8b1b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

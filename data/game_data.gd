@@ -1,7 +1,7 @@
 extends Node
 
 var knight = {
-		"hitpoints": 260,
+		"hitpoints": 300,
 	}
 
 var weapons = {
@@ -34,9 +34,9 @@ var weapons = {
 var enemies = {
 		"enemy_1": {
 				"title": "Evil Knight",
-				"hitpoints": 500,
-				"min_damage": 5,
-				"max_damage": 10,
+				"hitpoints": 700,
+				"min_damage": 15,
+				"max_damage": 25,
 				"cooldown_time": 2,
 				"music": "enemy1.ogg",
 				"music_volume": -11.107,
@@ -46,12 +46,12 @@ var enemies = {
 			},
 		"phoenix": {
 				"title": "Evil Fire Bird",
-				"hitpoints": 700,
+				"hitpoints": 900,
 				"attacks": [
 					{
 						"type": "hit",
-						"min_damage": 7,
-						"max_damage": 12,
+						"min_damage": 20,
+						"max_damage": 38,
 						"cooldown_time": 1.7,
 						"probability": 5,
 						"effect": ""
@@ -74,12 +74,12 @@ var enemies = {
 			},
 		"scorpion": {
 				"title": "Evil Scorpion",
-				"hitpoints": 900,
+				"hitpoints": 1100,
 				"attacks": [
 					{
 						"type": "hit",
-						"min_damage": 10,
-						"max_damage": 18,
+						"min_damage": 20,
+						"max_damage": 42,
 						"cooldown_time": 2.0,
 						"probability": 3,
 						"effect": ""
@@ -102,12 +102,12 @@ var enemies = {
 			},
 		"dragon": {
 				"title": "Elder Ninja Dragon",
-				"hitpoints": 1400,
+				"hitpoints": 1200,
 				"attacks": [
 					{
 						"type": "tail",
-						"min_damage": 50,
-						"max_damage": 70,
+						"min_damage": 80,
+						"max_damage": 100,
 						"cooldown_time": 6,
 						"probability": 3,
 						"effect": "tail"
@@ -115,7 +115,7 @@ var enemies = {
 					{
 						"type": "fire",
 						"min_damage": 2,
-						"max_damage": 10,
+						"max_damage": 8,
 						"cooldown_time": 5,
 						"probability": 4,
 						"effect": "fire"
@@ -132,7 +132,7 @@ var enemies = {
 	
 var effects = {
 		"fire": {
-				"damage_per_second": 6,
+				"damage_per_second": 16,
 				"length": 25,
 			}
 	}

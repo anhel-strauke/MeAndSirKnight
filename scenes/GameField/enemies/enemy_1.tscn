@@ -98,7 +98,6 @@ position = Vector2( 0, -165 )
 texture = ExtResource( 2 )
 centered = false
 hframes = 4
-frame = 3
 
 [node name="damage_emitter" parent="." instance=ExtResource( 3 )]
 position = Vector2( 99, -67 )
