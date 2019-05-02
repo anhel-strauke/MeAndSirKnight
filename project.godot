@@ -22,6 +22,7 @@ config/icon="res://icon.png"
 [autoload]
 
 singletone="*res://scripts/singletone.gd"
+mouse_cursor="*res://scenes/mouse_cursor.tscn"
 
 [display]
 

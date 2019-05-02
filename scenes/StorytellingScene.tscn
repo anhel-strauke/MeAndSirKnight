@@ -7,9 +7,6 @@
 [ext_resource path="res://textures/backgrounds/Intro2.png" type="Texture" id=5]
 [ext_resource path="res://textures/backgrounds/intro3.png" type="Texture" id=6]
 
-
-
-
 [sub_resource type="Animation" id=1]
 resource_name = "text"
 length = 2.0
@@ -105,6 +102,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Label2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [node name="StorytellingScene" type="Node2D"]
 script = ExtResource( 1 )
@@ -186,7 +195,6 @@ custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.752941, 0.752941, 0.752941, 1 )
 text = "STORY_LINE_3"
 clip_text = true
-percent_visible = 0.0
 max_lines_visible = 3
 
 [node name="Label2" type="Label" parent="story3"]
@@ -211,7 +219,6 @@ max_lines_visible = 3
 anims/text = SubResource( 3 )
 
 [node name="story3" type="Sprite" parent="story3"]
-modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 160, 90 )
 texture = ExtResource( 6 )
 

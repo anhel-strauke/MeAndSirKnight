@@ -3,9 +3,10 @@ extends Node2D
 var data = preload("res://data/game_data.gd").new()
 var weapon_data = data.weapons
 var effects_data = data.effects
+var knight_data = data.knight
 
-export var hitpoints: float = 200
-export var total_hitpoints = 200
+export var hitpoints: float = knight_data["hitpoints"]
+export var total_hitpoints: float = knight_data["hitpoints"]
 export var weapon_type: String = ""
 export var attacking: bool = false
 

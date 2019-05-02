@@ -1,5 +1,9 @@
 extends Node
 
+var knight = {
+		"hitpoints": 260,
+	}
+
 var weapons = {
 		"sword": {
 				"min_damage": 30,
@@ -48,7 +52,7 @@ var enemies = {
 						"type": "hit",
 						"min_damage": 7,
 						"max_damage": 12,
-						"cooldown_time": 3,
+						"cooldown_time": 1.7,
 						"probability": 5,
 						"effect": ""
 					},
@@ -61,6 +65,7 @@ var enemies = {
 						"effect": "fire"
 					}
 				],
+				"attack_queue": ["hit", "firewall", "hit"],
 				"music": "enemy2.ogg",
 				"music_volume": 0.0,
 				"weapons_avail": ["sword", "axe", "bucket"],
@@ -75,7 +80,7 @@ var enemies = {
 						"type": "hit",
 						"min_damage": 10,
 						"max_damage": 18,
-						"cooldown_time": 2.5,
+						"cooldown_time": 2.0,
 						"probability": 3,
 						"effect": ""
 					},
@@ -88,6 +93,7 @@ var enemies = {
 						"effect": "tail"
 					}
 				],
+				"attack_queue": ["hit", "tail", "hit", "hit", "tail", "hit", "tail", "hit", "hit", "tail"],
 				"music": "enemy3.ogg",
 				"music_volume": -11.107,
 				"weapons_avail": ["sword", "axe", "bucket"],
@@ -115,6 +121,7 @@ var enemies = {
 						"effect": "fire"
 					}
 				],
+				"attack_queue": ["fire", "tail", "fire", "tail", "fire"],
 				"music": "enemy1.ogg",
 				"music_volume": -11.107,
 				"weapons_avail": ["sword", "axe", "bucket"],

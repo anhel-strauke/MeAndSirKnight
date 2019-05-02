@@ -21,6 +21,7 @@ const about_text = {
 	
 [color=#cce1ae]Музыка/FX:[/color]
     Ди""",
+	
 		"en": """[color=#fea711]And Tak Soidet Games[/color]
 
 [color=#cce1ae]Game Design:[/color]
@@ -35,10 +36,10 @@ const about_text = {
 	Evelina
 	
 [color=#cce1ae]Animations, characters:[/color]
-    Maven
+    Meven
 	
 [color=#cce1ae]Music/FX:[/color]
-    D"""
+    Di"""
 	}
 
 # Called when the node enters the scene tree for the first time.

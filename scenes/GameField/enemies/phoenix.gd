@@ -48,7 +48,7 @@ func prepare_for_battle():
 	time_since_attack = 0.0
 	current_cooldown = 0.5
 	attacking = false
-	attack_queue = []
+	attack_queue = my_data["attack_queue"]
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
