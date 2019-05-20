@@ -15,7 +15,6 @@ export var current_enemy = "enemy_1"
 
 signal damage_done(damage)
 signal begin_battle()
-signal reset_battle()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -60,7 +59,9 @@ func prepare_battle():
 	squire_text.text = curr_enemy_data["dialog"][0]
 	knight_text.text = curr_enemy_data["dialog"][1]
 	$music_player.stream = resource
+	$music_player.volume_db = curr_enemy_data.get("music_volume", 0.0)
 	$music_player.play()
+	$GamePanel.set_disabled()
 	
 	
 
@@ -90,7 +91,6 @@ func transfer_tail_damage_to_knight(damage):
 	knight.take_tail_damage(damage)
 
 func update_enemy_hits_bar(hp, maxhp):
-	print("Enemy: ", hp, " of ", maxhp)
 	$GamePanel.set_enemy_hp(hp, maxhp)
 
 
@@ -98,12 +98,17 @@ func enemy_defeated():
 	knight.on_victory()
 	
 func show_victory():
+	$GamePanel.set_disabled()
 	knight.attacking = false
 	$AnimationPlayer.play("victory")
+	$music_player.stop()
+	$victory_sound.play()
 	
 func show_defeat():
 	$AnimationPlayer.play("defeat")
-	
+	$GamePanel.set_disabled()
+	$music_player.stop()
+	$defeat_sound.play()
 
 func begin_level(anim):
 	$AnimationPlayer.play("dialog")
@@ -111,14 +116,11 @@ func begin_level(anim):
 func start_battle(anim):
 	if anim == "dialog":
 		knight.attacking = true
+		$GamePanel.set_enabled()
 		emit_signal("begin_battle")
 	elif anim == "defeat":
-		_ready()
-		$AnimationPlayer.play("fadein")
-		get_node("../AnimationPlayer").play("start")
-		emit_signal("reset_battle")
-		$GamePanel.set_current_weapon("sword")
-		$GamePanel.set_current_action("give")
+		singletone.scene_to_reload = self.get_parent().filename
+		get_tree().change_scene("res://scenes/scene_reloader.tscn")
 	elif anim == "victory":
 		$music_player.stop()
 		if current_enemy == "enemy_1":
@@ -134,3 +136,16 @@ func start_battle(anim):
 
 func _on_knight_game_over():
 	show_defeat()
+
+
+func _on_GamePanel_menu_clicked():
+	get_tree().change_scene("res://scenes/MainMenu.tscn")
+
+
+func _on_GamePanel_pause_clicked():
+	$pause_popup.show()
+	get_tree().paused = true
+
+
+func _on_Me_repair_done(weapon):
+	$GamePanel.end_cooldown("repair")

@@ -4,10 +4,14 @@ var action_buttons = []
 var weapon_buttons = [] 
 signal action_clicked(name)
 signal weapon_clicked(act, wep)
+signal menu_clicked()
+signal pause_clicked()
 
 var hero_hp_bar = null
 var enemy_hp_bar = null
 var status_label = null
+var menu_button = null
+var pause_button = null
 
 var current_action = "give"
 var current_weapon = "sword"
@@ -15,6 +19,8 @@ var current_knight_weapon = "sword"
 
 var damaged_weapons = []
 var can_do_actions = true
+var enabled = false
+#var is_performing_repair = false
 
 # Public interface
 
@@ -31,6 +37,7 @@ func set_enemy_hp(hp, max_hp):
 	enemy_hp_bar.set_progress(hp/ max_hp)
 	
 func begin_cooldown(action, max_progress):
+	print("+ Begin cooldown at ", action)
 	for act_button in action_buttons:
 		if act_button.item_name == action:
 			act_button.play_cooldown(max_progress)
@@ -43,6 +50,7 @@ func update_cooldown(action, progress):
 			return
 	
 func end_cooldown(action):
+	print("+ End cooldown at ", action)
 	for act_button in action_buttons:
 		if act_button.item_name == action:
 			act_button.end_cooldown()
@@ -53,15 +61,18 @@ func play_small_cooldown(action):
 		if act_button.item_name == action:
 			act_button.play_small_cooldown()
 			return
-var activeState = true
+
 # Internals
-func setEnabled():
-	can_do_actions= true
+func set_enabled():
+	enabled = true
 	
-func setDisabled():
-	can_do_actions = false
+func set_disabled():
+	enabled = false
+	set_hint("")
 	
 func onButtonClicked(var btnName):
+	if not enabled:
+		return
 	if not can_do_actions:
 		return
 	for act_button in action_buttons:
@@ -71,6 +82,7 @@ func onButtonClicked(var btnName):
 			return
 	for wpn_button in weapon_buttons:
 		if wpn_button.item_name == btnName:
+			end_cooldown("repair") # Repairing process interrupts on any action
 			emit_signal("weapon_clicked", current_action, btnName)
 			set_current_action("give")
 
@@ -102,7 +114,8 @@ func update_repairable_weapons():
 		var current = (current_weapon == weapon_button.item_name)
 		var kn_current = (current_knight_weapon == weapon_button.item_name)
 		var damaged = (weapon_button.item_name in damaged_weapons)
-		weapon_button.set_dimmed(not damaged or current or kn_current)
+		var is_bucket = (weapon_button.item_name == "bucket")
+		weapon_button.set_dimmed(not damaged or current or kn_current or is_bucket)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -119,6 +132,8 @@ func _ready():
 	hero_hp_bar = $game_panel/UInode/hero_hits_bar
 	enemy_hp_bar = $game_panel/UInode/enemy_hits_bar
 	status_label = $game_panel/UInode/status_label
+	menu_button = $game_panel/UInode/buttons/menu_button
+	pause_button = $game_panel/UInode/buttons/pause_button
 	set_current_action("give")
 	set_current_weapon("sword")
 
@@ -131,8 +146,10 @@ func _input(event):
 		status_label.text = ""
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	if pause_button:
+		if not get_tree().paused and not pause_button.visible:
+			pause_button.show()
 
 func mark_weapon_damaged(weapon):
 	if not weapon in damaged_weapons:
@@ -149,16 +166,53 @@ func mark_ready():
 	can_do_actions = true
 
 func set_hint(button_id):
+	status_label.text = ""
+	if not enabled:
+		return
 	match button_id:
 		"we_give":
-			status_label.text = "Подать оружие"
+			status_label.text = tr("H_GIVE_")
 		"we_repair":
-			status_label.text = "Чинить оружие"
+			status_label.text = tr("H_REPAIR_")
 		"we_drop":
-			status_label.text = "Бросить оружие"
+			status_label.text = tr("H_DROP_")
 		"we_sword":
-			status_label.text = "Меч"
+			match current_action:
+				"give":
+					status_label.text = tr("H_GIVE_SWORD")
+				"repair":
+					status_label.text = tr("H_REPAIR_SWORD")
+				"drop":
+					status_label.text = tr("H_DROP_SWORD")
 		"we_axe":
-			status_label.text = "Секира"
+			match current_action:
+				"give":
+					status_label.text = tr("H_GIVE_AXE")
+				"repair":
+					status_label.text = tr("H_REPAIR_AXE")
+				"drop":
+					status_label.text = tr("H_DROP_AXE")
 		"we_bucket":
-			status_label.text = "Ведро с водой"
+			match current_action:
+				"give":
+					status_label.text = tr("H_GIVE_BUCKET")
+				"repair":
+					status_label.text = tr("H_REPAIR_BUCKET")
+				"drop":
+					status_label.text = tr("H_DROP_BUCKET")
+		"pause":
+			status_label.text = tr("H_PAUSE")
+
+
+func _on_menu_button_pressed():
+	emit_signal("menu_clicked")
+
+
+func _on_pause_button_input_event(viewport, event, shape_idx):
+	if event is InputEventMouseMotion:
+		set_hint("pause")
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_LEFT and not event.is_pressed():
+			pause_button.hide()
+			status_label.text = ""
+			emit_signal("pause_clicked")

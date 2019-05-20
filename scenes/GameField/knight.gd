@@ -1,15 +1,12 @@
 extends Node2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 var data = preload("res://data/game_data.gd").new()
 var weapon_data = data.weapons
 var effects_data = data.effects
+var knight_data = data.knight
 
-export var hitpoints: float = 200
-export var total_hitpoints = 100
+export var hitpoints: float = knight_data["hitpoints"]
+export var total_hitpoints: float = knight_data["hitpoints"]
 export var weapon_type: String = ""
 export var attacking: bool = false
 
@@ -36,6 +33,7 @@ var is_hitting = false
 var time_since_action = 0.0
 var is_bend = false
 var bucket_full = false
+var is_dead = false
 
 var water = null
 
@@ -80,7 +78,7 @@ func calc_damage():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if attacking and not is_bend:
+	if attacking and not is_bend and not is_dead:
 		if is_weapon_going_down:
 			if can_replace_weapon() and next_weapon != "":
 				replace_weapon(next_weapon)
@@ -99,9 +97,15 @@ func _process(delta):
 	var finished_effects = []
 	for effect in current_effects:
 		var damage = effect["dps"] * delta
-		take_damage(damage)
+		effect["damage_accum"] += damage
+		if effect["damage_accum"] >= 1.0:
+			take_damage(effect["damage_accum"])
+			effect["damage_accum"] = 0.0
 		effect["time"] += delta
 		if effect["time"] >= effect["max_time"]:
+			if effect["damage_accum"] > 0.0:
+				take_damage(effect["damage_accum"])
+				effect["damage_accum"] = 0.0
 			effect_nodes[effect["name"]].stop()
 			effect_nodes[effect["name"]].visible = false
 			finished_effects.append(effect)
@@ -110,6 +114,8 @@ func _process(delta):
 	
 
 func do_attack():
+	if is_dead or not attacking:
+		return
 	if weapon_type == "bucket" and bucket_full:
 		stop_effect("fire")
 	$AnimationPlayer.play("hit")
@@ -120,11 +126,13 @@ func do_attack():
 	emit_signal("weapon_damaged", weapon_type)
 	# TODO: Update weapon state
 	
-func take_damage(damage):
+func take_damage(damage: float):
 	if hitpoints > 0:
-		print("Knight took ", damage, " damage; hp is ", hitpoints)
+		print("Knight took ", damage, " damage; hp was ", hitpoints)
+		$damage_emitter.add_point(round(damage))
 		hitpoints -= damage
-		$AnimationPlayer.play("damage")
+		if not is_bend:
+			$AnimationPlayer.play("damage")
 		emit_signal("hitpoints_changed", hitpoints, total_hitpoints)
 		if hitpoints <= 0:
 			hitpoints = 0
@@ -145,7 +153,8 @@ func _on_hit():
 	emit_signal("damage_done", damage)
 
 func do_weapon_reset():
-	$AnimationPlayer.play("weapon_reset")
+	if attacking and not is_dead:
+		$AnimationPlayer.play("weapon_reset")
 	is_weapon_going_down = true
 	time_since_action = 0.0
 	
@@ -164,7 +173,7 @@ func set_next_weapon(new_weapon_type):
 	next_weapon = new_weapon_type
 
 func can_replace_weapon():
-	return is_weapon_going_down and not is_hitting
+	return is_weapon_going_down and not is_hitting and not is_dead
 
 func _on_animation_finished(anim_name):
 	if anim_name == "hit" or anim_name == "damage":
@@ -173,9 +182,9 @@ func _on_animation_finished(anim_name):
 	elif anim_name == "victory":
 		emit_signal("victory")
 	is_bend = false
-	do_weapon_reset()
 	is_hitting = false
-		
+	if anim_name in ["hit", "bend", "victory", "damage"]:
+		do_weapon_reset()
 
 func update_weapon_hits(weapon, amount):
 	weapon_hit_count[weapon] = round(len(weapon_data[weapon]["penalty"]) * (1.0 - amount))
@@ -192,6 +201,7 @@ func prepare_for_battle():
 	is_weapon_going_down = true
 	is_hitting = false
 	is_bend = false
+	is_dead = false
 	time_since_action = 0.0
 	effect_nodes["fire"].visible = false
 	$AnimationPlayer.play("idle")
@@ -205,6 +215,8 @@ func _find_current_effect(effect_name):
 	return null
 
 func run_effect(effect_name):
+	if is_dead:
+		return
 	var eff_node = effect_nodes[effect_name]
 	var existing_effect = _find_current_effect(effect_name)
 	if existing_effect:
@@ -216,6 +228,7 @@ func run_effect(effect_name):
 				"name": effect_name,
 				"dps": effects_data[effect_name]["damage_per_second"],
 				"time": 0.0,
+				"damage_accum": 0.0,
 				"max_time": effects_data[effect_name]["length"],
 			}
 		current_effects.append(new_effect)
@@ -237,6 +250,7 @@ func do_bend():
 	$AnimationPlayer.play("bend")
 
 func drop_dead():
+	is_dead = true
 	$AnimationPlayer.play("death")
 
 func _death_completed():

@@ -37,7 +37,6 @@ anims/start = SubResource( 1 )
 
 [connection signal="begin_battle" from="GameField" to="enemy_1" method="begin_battle"]
 [connection signal="damage_done" from="GameField" to="enemy_1" method="take_damage"]
-[connection signal="reset_battle" from="GameField" to="enemy_1" method="_ready"]
 [connection signal="damage_done" from="enemy_1" to="GameField" method="transfer_damage_to_knight"]
 [connection signal="finally_dead" from="enemy_1" to="GameField" method="enemy_defeated"]
 [connection signal="hp_changed" from="enemy_1" to="GameField" method="update_enemy_hits_bar"]

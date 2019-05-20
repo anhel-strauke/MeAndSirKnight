@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scenes/GameField/GameField.gd" type="Script" id=1]
 [ext_resource path="res://scenes/GameField/me.tscn" type="PackedScene" id=2]
@@ -10,12 +10,16 @@
 [ext_resource path="res://scenes/GameField/GamePanel.tscn" type="PackedScene" id=8]
 [ext_resource path="res://textures/black8x8.png" type="Texture" id=9]
 [ext_resource path="res://fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://scenes/GameField/pause_overlay.gd" type="Script" id=11]
+[ext_resource path="res://fonts/pixelfont_dynamicfont.tres" type="DynamicFont" id=12]
+[ext_resource path="res://sound/Win.ogg" type="AudioStream" id=13]
+[ext_resource path="res://sound/Lose.ogg" type="AudioStream" id=14]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "defeat"
-length = 3.0
+length = 6.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("overlay:visible")
+tracks/0/path = NodePath("overlay_root/overlay:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -27,19 +31,19 @@ tracks/0/keys = {
 "values": [ true ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("overlay:modulate")
+tracks/1/path = NodePath("overlay_root/overlay:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.4, 2.5, 3 ),
+"times": PoolRealArray( 0, 0.4, 5.3, 5.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.627451 ), Color( 1, 1, 1, 0.627451 ), Color( 0, 0, 0, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("overlay/victory_lb:visible")
+tracks/2/path = NodePath("overlay_root/labels/victory_lb:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -51,20 +55,19 @@ tracks/2/keys = {
 "values": [ false ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("overlay/defeat_lb:visible")
+tracks/3/path = NodePath("overlay_root/labels/defeat_lb:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 2.5 ),
+"times": PoolRealArray( 0, 5.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "dialog"
+[sub_resource type="Animation" id=2]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("background/characters/bubble_squire:visible")
@@ -91,11 +94,11 @@ tracks/1/keys = {
 "values": [ false, true, false ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "fadein"
 length = 0.7
 tracks/0/type = "value"
-tracks/0/path = NodePath("overlay:modulate")
+tracks/0/path = NodePath("overlay_root/overlay:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -107,7 +110,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("overlay/defeat_lb:visible")
+tracks/1/path = NodePath("overlay_root/labels/defeat_lb:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -119,7 +122,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("overlay/victory_lb:visible")
+tracks/2/path = NodePath("overlay_root/labels/victory_lb:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -131,7 +134,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("overlay:visible")
+tracks/3/path = NodePath("overlay_root/overlay:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -143,11 +146,11 @@ tracks/3/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "victory"
-length = 3.0
+length = 3.6
 tracks/0/type = "value"
-tracks/0/path = NodePath("overlay:visible")
+tracks/0/path = NodePath("overlay_root/overlay:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -159,7 +162,7 @@ tracks/0/keys = {
 "values": [ true ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("overlay:modulate")
+tracks/1/path = NodePath("overlay_root/overlay:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -171,7 +174,7 @@ tracks/1/keys = {
 "values": [ Color( 0, 0, 0, 0 ), Color( 1, 1, 1, 0.631373 ), Color( 1, 1, 1, 0.631373 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("overlay/defeat_lb:visible")
+tracks/2/path = NodePath("overlay_root/labels/defeat_lb:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -183,7 +186,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("overlay/victory_lb:visible")
+tracks/3/path = NodePath("overlay_root/labels/victory_lb:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -195,7 +198,7 @@ tracks/3/keys = {
 "values": [ true, true ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("overlay/victory_lb:modulate")
+tracks/4/path = NodePath("overlay_root/labels/victory_lb:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -207,9 +210,8 @@ tracks/4/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=5]
 size = 32
-outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 10 )
 
@@ -253,14 +255,14 @@ texture = ExtResource( 6 )
 script = ExtResource( 7 )
 
 [node name="text" type="Label" parent="background/characters/bubble_squire"]
-margin_left = -32.0
+margin_left = -36.0
 margin_top = -25.0
-margin_right = 32.0
+margin_right = 38.0
 rect_clip_content = true
 custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0.207843, 0.109804, 0, 1 )
-text = "Deus
-Vult"
+text = "Icebucket
+challenge"
 align = 1
 valign = 1
 clip_text = true
@@ -268,44 +270,102 @@ clip_text = true
 [node name="GamePanel" parent="." instance=ExtResource( 8 )]
 z_as_relative = false
 
-[node name="music_player" type="AudioStreamPlayer" parent="."]
-volume_db = -11.107
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "fadein"
-anims/defeat = SubResource( 2 )
-anims/dialog = SubResource( 1 )
-anims/fadein = SubResource( 4 )
-anims/victory = SubResource( 5 )
+anims/defeat = SubResource( 1 )
+anims/dialog = SubResource( 2 )
+anims/fadein = SubResource( 3 )
+anims/victory = SubResource( 4 )
 
-[node name="overlay" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0.627451 )
+[node name="overlay_root" type="Node2D" parent="."]
+editor/display_folded = true
+z_index = 20
+
+[node name="overlay" type="Sprite" parent="overlay_root"]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 160, 90 )
 z_index = 15
 texture = ExtResource( 9 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 320, 180 )
 
-[node name="defeat_lb" type="Label" parent="overlay"]
-margin_left = -143.0
-margin_top = -21.0
-margin_right = 145.0
-margin_bottom = 11.0
-custom_fonts/font = SubResource( 3 )
-text = "ПОТРАЧЕНО"
+[node name="labels" type="Node2D" parent="overlay_root"]
+z_index = 15
 
-[node name="victory_lb" type="Label" parent="overlay"]
+[node name="victory_lb" type="Label" parent="overlay_root/labels"]
 visible = false
 modulate = Color( 1, 1, 1, 0 )
-margin_left = -144.0
-margin_top = -68.0
-margin_right = 144.0
-margin_bottom = -1.0
-custom_fonts/font = SubResource( 3 )
-text = "ВРАГ 
-ПОВЕРЖЕН"
+margin_left = 17.0
+margin_top = 45.0
+margin_right = 305.0
+margin_bottom = 112.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "VICTORY"
+align = 1
+clip_text = true
+
+[node name="defeat_lb" type="Label" parent="overlay_root/labels"]
+margin_left = 16.0
+margin_top = 24.0
+margin_right = 304.0
+margin_bottom = 126.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "DEFEAT"
 align = 1
 
+[node name="pause_popup" type="Node2D" parent="."]
+pause_mode = 2
+editor/display_folded = true
+visible = false
+z_index = 20
+
+[node name="overlay" type="Sprite" parent="pause_popup"]
+pause_mode = 2
+modulate = Color( 1, 1, 1, 0.615686 )
+position = Vector2( 160, 90 )
+z_index = 5
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 320, 180 )
+script = ExtResource( 11 )
+
+[node name="labels" type="Node2D" parent="pause_popup"]
+z_index = 20
+
+[node name="pause_label" type="Label" parent="pause_popup/labels"]
+margin_left = 17.0
+margin_top = 69.0
+margin_right = 305.0
+margin_bottom = 101.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "PAUSE"
+align = 1
+
+[node name="pause_label_2" type="Label" parent="pause_popup/labels"]
+margin_left = 52.0
+margin_top = 108.0
+margin_right = 276.0
+margin_bottom = 122.0
+custom_fonts/font = ExtResource( 12 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "CLICK_TO_CONT"
+align = 1
+
+[node name="victory_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+volume_db = -6.575
+
+[node name="defeat_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+volume_db = -6.574
+
+[node name="music_player" type="AudioStreamPlayer" parent="."]
+volume_db = -11.107
+
+[connection signal="repair_done" from="background/characters/Me" to="." method="_on_Me_repair_done"]
 [connection signal="repair_going" from="background/characters/Me" to="." method="_on_Me_repair_going"]
 [connection signal="repair_start" from="background/characters/Me" to="." method="_on_Me_repair_start"]
 [connection signal="weapon_updated" from="background/characters/Me" to="background/characters/knight" method="update_weapon_hits"]
@@ -313,9 +373,11 @@ align = 1
 [connection signal="game_over" from="background/characters/knight" to="." method="_on_knight_game_over"]
 [connection signal="hitpoints_changed" from="background/characters/knight" to="GamePanel" method="set_hero_hp"]
 [connection signal="victory" from="background/characters/knight" to="." method="_on_knight_victory"]
-[connection signal="weapon_changed" from="background/characters/knight" to="GamePanel" method="update_knight_weapon"]
 [connection signal="weapon_changed" from="background/characters/knight" to="background/characters/Me" method="weapon_taken"]
+[connection signal="weapon_changed" from="background/characters/knight" to="GamePanel" method="update_knight_weapon"]
 [connection signal="weapon_damaged" from="background/characters/knight" to="GamePanel" method="mark_weapon_damaged"]
 [connection signal="weapon_repaired" from="background/characters/knight" to="GamePanel" method="mark_weapon_repaired"]
+[connection signal="menu_clicked" from="GamePanel" to="." method="_on_GamePanel_menu_clicked"]
+[connection signal="pause_clicked" from="GamePanel" to="." method="_on_GamePanel_pause_clicked"]
 [connection signal="weapon_clicked" from="GamePanel" to="." method="process_weapon_click"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="start_battle"]

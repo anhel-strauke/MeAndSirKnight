@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Pain of enemy.ogg-c0b8990b44e7198f31ad83f1ff5dd4ab.oggstr"
+
+[deps]
+
+source_file="res://Art/Sound/GJ/Pain of enemy.ogg"
+dest_files=[ "res://.import/Pain of enemy.ogg-c0b8990b44e7198f31ad83f1ff5dd4ab.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -17,6 +17,7 @@ _global_script_class_icons={
 
 config/name="Me And Sir Knight"
 run/main_scene="res://scenes/SplashScreen.tscn"
+boot_splash/fullsize=false
 config/icon="res://icon.png"
 
 [autoload]
@@ -79,6 +80,15 @@ ui_down={
 , Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":1,"axis_value":1.0,"script":null)
  ]
 }
+
+[locale]
+
+test="ru"
+translation_remaps={
+"res://textures/title.png": PoolStringArray( "res://textures/title_en.png:en" )
+}
+translations=PoolStringArray( "res://translation.en.translation", "res://translation.ru.translation" )
+locale_filter=[ 0, [ "en", "ru" ] ]
 
 [rendering]
 

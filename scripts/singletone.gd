@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -8,9 +8,12 @@ extends Node
 func _loadScene(var sceneName):
 	get_tree().change_scene(sceneName)
 
-var bos = 1 ;
+var bos = 1
+
+var scene_to_reload = ""
+
 func _ready():
-	pass # Replace with function body.
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

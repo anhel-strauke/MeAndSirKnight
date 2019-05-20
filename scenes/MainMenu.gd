@@ -15,8 +15,13 @@ func _ready():
 	menu_items = [
 		$game_menu/new_game,
 		$game_menu/authors,
+		$game_menu/language,
 		$game_menu/exit
 	]
+	if OS.get_name() == "HTML5":
+		var exit_item = menu_items[len(menu_items) - 1]
+		exit_item.visible = false
+		menu_items.remove(len(menu_items) - 1)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -58,7 +63,13 @@ func _input(event):
 	elif event is InputEventMouseButton:
 		if event.get_button_index() == BUTTON_LEFT and event.is_pressed():
 			# TODO: Play sound
-			execute_action(current_item)
+			for menu_item in menu_items:
+				var mouse_pos: Vector2 = menu_item.get_local_mouse_position()
+				if (mouse_pos.x < menu_item.get_size().x and mouse_pos.x >= 0 and
+					mouse_pos.y < menu_item.get_size().y and mouse_pos.y >= 0):
+						var item_index = menu_items.find(menu_item)
+						execute_action(item_index)
+						break
 #	elif event.is_action_pressed("ui_down"):
 #		var item = current_item + 1
 #		if item >= len(menu_items):
@@ -82,5 +93,7 @@ func execute_action(menu_item: int):
 		1:
 			get_tree().change_scene("res://scenes/about_team.tscn")
 		2:
+			get_tree().change_scene("res://scenes/language_screen.tscn")
+		3:
 			get_tree().quit()
 
